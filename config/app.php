@@ -78,9 +78,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
@@ -123,4 +121,36 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+
+    // ...
+    'locale' => 'fr',
+    'fallback_locale' => 'fr',
+    'available_locales' => ['fr', 'en', 'es', 'pt'],
+
+    'locales' => [
+        'fr' => [
+            'name' => 'French',
+            'native' => 'Français',
+            'flag' => '🇫🇷',
+            'code' => 'FR',
+        ],
+        'en' => [
+            'name' => 'English',
+            'native' => 'English',
+            'flag' => '🇬🇧',
+            'code' => 'EN',
+        ],
+        'es' => [
+            'name' => 'Spanish',
+            'native' => 'Español',
+            'flag' => '🇪🇸',
+            'code' => 'ES',
+        ],
+        'pt' => [
+            'name' => 'Portuguese',
+            'native' => 'Português',
+            'flag' => '🇵🇹',
+            'code' => 'PT',
+        ],
+    ],
 ];

@@ -3,42 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'COASP')</title>
+    <meta name="description" content="COASP - Pour une Agriculture Durable en Afrique de l'Ouest">
+    <title>@yield('title', 'COASP - Agriculture & Écologie')</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('images/favicon.png') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     @stack('styles')
 </head>
-<body class="font-poppins antialiased">
+<body class="font-poppins">
 
-<!-- Preloader -->
-@include('partials.preloader')
-
-<!-- Go Top Button -->
-<button id="go-top" class="fixed bottom-8 right-8 bg-accent hover:bg-accent-dark p-3 rounded-full shadow-lg opacity-0 transition-all duration-300 z-50">
-    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-    </svg>
-</button>
-
-<!-- Mobile Menu Sidebar -->
-@include('partials.mobile-menu')
-
-<!-- Top Bar -->
-@include('partials.topbar')
-
-<!-- Header -->
 @include('partials.header')
 
-<!-- Page Title -->
-@yield('page-title')
-
-<!-- Main Content -->
-<main id="main-content" class="site-main">
+<main>
     @yield('content')
 </main>
 
-<!-- Footer -->
 @include('partials.footer')
+
+<!-- Go Top Button -->
+<button id="go-top"
+        class="fixed bottom-8 right-8 w-12 h-12 bg-accent hover:bg-accent-dark text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50 flex items-center justify-center">
+    <i class="fas fa-arrow-up"></i>
+</button>
 
 @stack('scripts')
 </body>

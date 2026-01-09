@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
 
 // À propos
 Route::prefix('qui-sommes-nous')->group(function () {
