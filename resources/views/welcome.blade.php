@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('contet')
     <!-- Hero Slider Section -->
     <section class="relative w-full h-screen overflow-hidden">
         <div class="absolute inset-0">

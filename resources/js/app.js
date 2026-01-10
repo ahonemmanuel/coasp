@@ -8,19 +8,21 @@ Alpine.start();
 
 /* ==========================================
    INITIALISATION AU CHARGEMENT
-   ========================================== */
+========================================== */
 document.addEventListener('DOMContentLoaded', function() {
     initGoTopButton();
     initSearchToggle();
     initStickyHeader();
     initSmoothScroll();
     initDropdowns();
-    restoreLanguage();
+
+    // Charger le script Google Translate
+    loadGoogleTranslate();
 });
 
 /* ==========================================
    GO TOP BUTTON
-   ========================================== */
+========================================== */
 function initGoTopButton() {
     const goTopBtn = document.getElementById('go-top');
     if (!goTopBtn) return;
@@ -35,18 +37,18 @@ function initGoTopButton() {
         }
     });
 
-    goTopBtn.addEventListener('click', function() {
+    goTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
 /* ==========================================
    SEARCH TOGGLE
-   ========================================== */
+========================================== */
 function initSearchToggle() {
     const searchToggle = document.querySelector('.search-toggle');
     const searchOverlay = document.getElementById('search-overlay');
-
     if (!searchToggle || !searchOverlay) return;
 
     searchToggle.addEventListener('click', function(e) {
@@ -67,7 +69,7 @@ function initSearchToggle() {
 
 /* ==========================================
    STICKY HEADER
-   ========================================== */
+========================================== */
 function initStickyHeader() {
     const header = document.getElementById('header');
     if (!header) return;
@@ -83,7 +85,7 @@ function initStickyHeader() {
 
 /* ==========================================
    SMOOTH SCROLL
-   ========================================== */
+========================================== */
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -104,17 +106,15 @@ function initSmoothScroll() {
 
 /* ==========================================
    DROPDOWNS
-   ========================================== */
+========================================== */
 function initDropdowns() {
     const dropdownLinks = document.querySelectorAll('.dropdown-container a');
-
     dropdownLinks.forEach(link => {
         link.style.pointerEvents = 'auto';
         link.style.cursor = 'pointer';
     });
 
     const dropdownContainers = document.querySelectorAll('.dropdown-container');
-
     dropdownContainers.forEach(container => {
         let timeoutId;
 
@@ -138,8 +138,19 @@ function initDropdowns() {
 }
 
 /* ==========================================
-   GOOGLE TRANSLATE
-   ========================================== */
+   GOOGLE TRANSLATE - CHARGEMENT DU SCRIPT
+========================================== */
+function loadGoogleTranslate() {
+    // Charger le script Google Translate
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.head.appendChild(script);
+}
+
+/* ==========================================
+   GOOGLE TRANSLATE - INITIALISATION
+========================================== */
 window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
         pageLanguage: 'fr',
@@ -148,8 +159,16 @@ window.googleTranslateElementInit = function() {
         autoDisplay: false,
         multilanguagePage: true
     }, 'google_translate_element');
+
+    // Restaurer la langue après l'initialisation
+    setTimeout(() => {
+        restoreLanguage();
+    }, 500);
 };
 
+/* ==========================================
+   CHANGEMENT DE LANGUE
+========================================== */
 window.changeLanguage = function(langCode, langName, flagCode) {
     console.log('Changement de langue vers:', langCode);
 
@@ -161,18 +180,28 @@ window.changeLanguage = function(langCode, langName, flagCode) {
     localStorage.setItem('selectedLanguageName', langName);
     localStorage.setItem('selectedLanguageFlag', flagCode);
 
-    // Gérer les cookies
+    // Gérer les cookies Google Translate
     if (langCode === 'fr') {
+        // Retour au français - effacer les cookies
         eraseCookie('googtrans');
-        eraseCookie('googtrans', '.127.0.0.1');
-        eraseCookie('googtrans', 'localhost');
+        eraseCookie('googtrans', window.location.hostname);
         window.location.reload();
     } else {
-        setCookie('googtrans', '/fr/' + langCode, 1);
-        window.location.reload();
+        // Changer vers une autre langue
+        const cookieValue = '/fr/' + langCode;
+        setCookie('googtrans', cookieValue, 1);
+        setCookie('googtrans', cookieValue, 1, window.location.hostname);
+
+        // Recharger après un court délai
+        setTimeout(() => {
+            window.location.reload();
+        }, 100);
     }
 };
 
+/* ==========================================
+   MISE À JOUR DE L'AFFICHAGE
+========================================== */
 function updateLanguageDisplay(langCode, langName, flagCode) {
     const flagUrl = `https://flagcdn.com/w40/${flagCode}.png`;
     const shortCode = langCode.toUpperCase();
@@ -190,14 +219,22 @@ function updateLanguageDisplay(langCode, langName, flagCode) {
     if (headerLang) headerLang.textContent = shortCode;
 }
 
-function setCookie(name, value, days) {
+/* ==========================================
+   GESTION DES COOKIES
+========================================== */
+function setCookie(name, value, days, domain = null) {
     let expires = "";
     if (days) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+
+    let cookieString = name + "=" + (value || "") + expires + "; path=/";
+    if (domain) {
+        cookieString += "; domain=" + domain;
+    }
+    document.cookie = cookieString;
 }
 
 function getCookie(name) {
@@ -219,19 +256,26 @@ function eraseCookie(name, domain = null) {
     }
 }
 
+/* ==========================================
+   RESTAURER LA LANGUE
+========================================== */
 function restoreLanguage() {
     const savedLang = localStorage.getItem('selectedLanguage');
     const savedLangName = localStorage.getItem('selectedLanguageName');
     const savedLangFlag = localStorage.getItem('selectedLanguageFlag');
 
-    if (savedLang) {
-        updateLanguageDisplay(savedLang, savedLangName || 'Français', savedLangFlag || 'fr');
+    if (savedLang && savedLang !== 'fr') {
+        updateLanguageDisplay(savedLang, savedLangName || 'English', savedLangFlag || 'gb');
 
+        // Vérifier si le cookie est déjà défini
         const currentCookie = getCookie('googtrans');
+        const expectedCookie = '/fr/' + savedLang;
 
-        if (savedLang !== 'fr' && !currentCookie) {
-            setCookie('googtrans', '/fr/' + savedLang, 1);
-            setTimeout(() => window.location.reload(), 100);
+        if (currentCookie !== expectedCookie) {
+            setCookie('googtrans', expectedCookie, 1);
+            setCookie('googtrans', expectedCookie, 1, window.location.hostname);
         }
+    } else if (savedLang === 'fr') {
+        updateLanguageDisplay('fr', 'Français', 'fr');
     }
 }
