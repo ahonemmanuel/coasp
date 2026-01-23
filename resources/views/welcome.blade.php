@@ -1,347 +1,59 @@
 @extends('layouts.app')
 
-@section('content')
-
-    {{-- SLIDER REVOLUTION --}}
-    <section class="relative w-full overflow-hidden">
-        <div class="swiper homeSlider">
-            <div class="swiper-wrapper">
-
-                {{-- Slide 1 --}}
-                <div class="swiper-slide relative h-[900px] md:h-[700px]">
-                    <img src="{{ asset('images/slides/90.png') }}" alt="Slide 1" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/30"></div>
-                    <div class="container mx-auto px-4 h-full relative z-10">
-                        <div class="flex items-center h-full">
-                            <div class="max-w-5xl">
-                                <div class="text-[#e6d54f] font-['Nunito'] font-semibold text-[30px] md:text-[24px] leading-[28px] mb-4 animate-[fadeInUp_1s]">
-                                    Bienvenue au COASP - Pour une Agriculture Durable en Afrique de l'Ouest
-                                </div>
-                                <h1 class="font-['Nunito'] font-bold text-white text-[63px] md:text-[52px] leading-[72px] md:leading-[59px] mb-6 animate-[fadeInLeft_1.2s]">
-                                    Préservons les semences paysannes et développons l'agroécologie paysanne
-                                </h1>
-                                <p class="font-['Poppins'] text-white text-[18px] leading-[28px] mb-8 max-w-3xl animate-[fadeInUp_1s_0.5s]">
-                                    Découvrez notre engagement envers une souveraineté semencière renforcée et une agriculture équitable.
-                                </p>
-                                <a href="{{ route('about') }}" class="inline-block bg-[#297d53] text-white font-['Poppins'] font-semibold text-[16px] px-[25px] py-[15px] rounded-[5px] hover:bg-white hover:text-black transition-all duration-300 animate-[fadeInUp_1.2s_1s]">
-                                    En Savoir Plus
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Slide 2 --}}
-                <div class="swiper-slide relative h-[900px] md:h-[700px]">
-                    <img src="{{ asset('images/slides/coasp-image-agro-ecologie-6.png') }}" alt="Slide 2" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/30"></div>
-                    <div class="container mx-auto px-4 h-full relative z-10">
-                        <div class="flex items-center justify-center h-full text-center">
-                            <div class="max-w-4xl">
-                                <div class="text-[#e6d54f] font-['Nunito'] font-semibold text-[30px] md:text-[24px] leading-[28px] mb-4 animate-[fadeIn_1s]">
-                                    Souveraineté Semencière Paysanne
-                                </div>
-                                <h1 class="font-['Nunito'] font-bold text-white text-[72px] md:text-[59px] leading-[82px] md:leading-[67px] mb-6 animate-[fadeInDown_1.2s]">
-                                    Foire de semences paysanes
-                                </h1>
-                                <p class="font-['Poppins'] text-white text-[18px] leading-[28px] mb-8 mx-auto max-w-2xl animate-[fadeInUp_1s_0.5s]">
-                                    Rejoignez-nous dans la préservation de notre biodiversité agricole.
-                                </p>
-                                <a href="{{ route('about') }}" class="inline-block bg-[#297d53] text-white font-['Poppins'] font-semibold text-[16px] px-[25px] py-[15px] rounded-[5px] hover:bg-white hover:text-black transition-all duration-300 animate-[fadeInUp_1.2s_1s]">
-                                    Contactez-nous
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            {{-- Navigation --}}
-            <div class="swiper-button-next !text-white"></div>
-            <div class="swiper-button-prev !text-white"></div>
-            <div class="swiper-pagination !bottom-8"></div>
-        </div>
-    </section>
-
-    {{-- SECTION TITRE PILIERS --}}
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <div class="text-[#e6d54f] font-['Poppins'] font-medium text-[16px] mb-4">
-                    Engagement Intégré pour une Agriculture Durable
-                </div>
-                <h1 class="font-['Nunito'] font-bold text-[#435a52] text-[50px] md:text-[40px] leading-[1.2] mb-6">
-                    Piliers d'Action du COASP : Cultiver, Renforcer, Plaider et Communiquer Semences Paysannes en Action
-                </h1>
-            </div>
-        </div>
-    </section>
-
-    {{-- IMAGE BOXES - 4 PILIERS --}}
-    <section class="py-16 bg-[#f2f7f5]">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                {{-- Box 1: Foires et Conférences --}}
-                <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
-                    <div class="relative h-[240px] overflow-hidden">
-                        <img src="{{ asset('images/pillars/whatsapp-image-08-57-49.jpeg') }}" alt="Foires et Conférences" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-white transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-12 h-12 bg-[#e6d54f] rounded-full flex items-center justify-center">
-                                <i class="fas fa-star text-white text-xl"></i>
-                            </div>
-                        </div>
-                        <h4 class="font-['Outfit'] font-semibold text-[#435a52] text-[20px] leading-[1.3]">
-                            <a href="#aboutcoasp" class="hover:text-[#297d53] transition-colors">Foires et Conférences</a>
-                        </h4>
-                    </div>
-                </div>
-
-                {{-- Box 2: Renforcement des Capacités --}}
-                <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
-                    <div class="relative h-[240px] overflow-hidden">
-                        <img src="{{ asset('images/pillars/capacity-building.jpeg') }}" alt="Renforcement des Capacités" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-white transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-12 h-12 bg-[#e6d54f] rounded-full flex items-center justify-center">
-                                <i class="fas fa-graduation-cap text-white text-xl"></i>
-                            </div>
-                        </div>
-                        <h4 class="font-['Outfit'] font-semibold text-[#435a52] text-[20px] leading-[1.3]">
-                            <a href="#aboutcoasp" class="hover:text-[#297d53] transition-colors">Renforcement des Capacités</a>
-                        </h4>
-                    </div>
-                </div>
-
-                {{-- Box 3: Plaidoyer et Lobbying --}}
-                <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
-                    <div class="relative h-[240px] overflow-hidden">
-                        <img src="{{ asset('images/pillars/advocacy.jpeg') }}" alt="Plaidoyer et Lobbying" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-white transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-12 h-12 bg-[#e6d54f] rounded-full flex items-center justify-center">
-                                <i class="fas fa-bullhorn text-white text-xl"></i>
-                            </div>
-                        </div>
-                        <h4 class="font-['Outfit'] font-semibold text-[#435a52] text-[20px] leading-[1.3]">
-                            <a href="#aboutcoasp" class="hover:text-[#297d53] transition-colors">Plaidoyer et Lobbying</a>
-                        </h4>
-                    </div>
-                </div>
-
-                {{-- Box 4: Communication et Documentation --}}
-                <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
-                    <div class="relative h-[240px] overflow-hidden">
-                        <img src="{{ asset('images/pillars/communication.jpeg') }}" alt="Communication" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-white transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-12 h-12 bg-[#e6d54f] rounded-full flex items-center justify-center">
-                                <i class="fas fa-comments text-white text-xl"></i>
-                            </div>
-                        </div>
-                        <h4 class="font-['Outfit'] font-semibold text-[#435a52] text-[20px] leading-[1.3]">
-                            <a href="#aboutcoasp" class="hover:text-[#297d53] transition-colors">Communication et Documentation</a>
-                        </h4>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    {{-- SECTION À PROPOS COASP --}}
-    <section id="aboutcoasp" class="py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-                {{-- Colonne gauche: Images --}}
-                <div class="relative">
-                    <div class="relative">
-                        <img src="{{ asset('images/about/main-image.jpg') }}" alt="COASP" class="w-full rounded-lg shadow-xl">
-                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-[#e6d54f] rounded-lg -z-10"></div>
-                    </div>
-                </div>
-
-                {{-- Colonne droite: Contenu --}}
-                <div>
-                    <div class="text-[#e6d54f] font-['Poppins'] font-medium text-[16px] mb-4">
-                        À Propos du COASP
-                    </div>
-                    <h2 class="font-['Nunito'] font-bold text-[#435a52] text-[50px] md:text-[40px] leading-[1.2] mb-6">
-                        Coalition pour la Protection du Patrimoine Génétique Africain
-                    </h2>
-                    <p class="text-[#494A4D] text-[16px] leading-[1.75] mb-6">
-                        Le COASP (Coalition pour la Protection du Patrimoine Génétique Africain) est une organisation dédiée à la préservation des semences paysannes et au développement de l'agroécologie en Afrique de l'Ouest.
-                    </p>
-                    <p class="text-[#494A4D] text-[16px] leading-[1.75] mb-8">
-                        Nous œuvrons pour une souveraineté semencière renforcée, une agriculture équitable et durable qui respecte les droits des paysans et préserve la biodiversité agricole pour les générations futures.
-                    </p>
-                    <a href="{{ route('about') }}" class="inline-block bg-[#297d53] text-white font-['Poppins'] font-semibold text-[16px] px-[30px] py-[14px] rounded-[8px] hover:bg-[#1e5d3d] transition-all duration-300">
-                        Découvrez Notre Mission
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    {{-- COMPTEURS / STATISTIQUES --}}
-    <section class="py-20 bg-[#297d53] relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: url('{{ asset('images/patterns/pattern.png') }}');"></div>
-        </div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                {{-- Compteur 1 --}}
-                <div class="text-center">
-                    <div class="text-[#e6d54f] font-['Nunito'] font-bold text-[60px] leading-[1] mb-2">
-                        <span class="counter" data-target="15">0</span>+
-                    </div>
-                    <div class="text-white font-['Poppins'] text-[18px]">Années d'Expérience</div>
-                </div>
-
-                {{-- Compteur 2 --}}
-                <div class="text-center">
-                    <div class="text-[#e6d54f] font-['Nunito'] font-bold text-[60px] leading-[1] mb-2">
-                        <span class="counter" data-target="500">0</span>+
-                    </div>
-                    <div class="text-white font-['Poppins'] text-[18px]">Variétés Préservées</div>
-                </div>
-
-                {{-- Compteur 3 --}}
-                <div class="text-center">
-                    <div class="text-[#e6d54f] font-['Nunito'] font-bold text-[60px] leading-[1] mb-2">
-                        <span class="counter" data-target="10000">0</span>+
-                    </div>
-                    <div class="text-white font-['Poppins'] text-[18px]">Paysans Formés</div>
-                </div>
-
-                {{-- Compteur 4 --}}
-                <div class="text-center">
-                    <div class="text-[#e6d54f] font-['Nunito'] font-bold text-[60px] leading-[1] mb-2">
-                        <span class="counter" data-target="12">0</span>
-                    </div>
-                    <div class="text-white font-['Poppins'] text-[18px]">Pays d'Intervention</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    {{-- DERNIÈRES ACTUALITÉS --}}
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <div class="text-[#e6d54f] font-['Poppins'] font-medium text-[16px] mb-4">
-                    Actualités COASP
-                </div>
-                <h2 class="font-['Nunito'] font-bold text-[#435a52] text-[50px] md:text-[40px] leading-[1.2]">
-                    Dernières Nouvelles et Événements
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @for($i = 1; $i <= 3; $i++)
-                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                        <div class="relative h-64 overflow-hidden">
-                            <img src="{{ asset('images/news/news-'.$i.'.jpg') }}" alt="Actualité {{ $i }}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-4 text-sm text-[#798883] mb-3">
-                                <span><i class="far fa-calendar mr-2"></i>12 Nov 2025</span>
-                                <span><i class="far fa-user mr-2"></i>Admin</span>
-                            </div>
-                            <h3 class="font-['Outfit'] font-semibold text-[#435a52] text-[24px] leading-[1.3] mb-3 hover:text-[#297d53] transition-colors">
-                                <a href="{{ route('news.show', $i) }}">Titre de l'actualité {{ $i }}</a>
-                            </h3>
-                            <p class="text-[#494A4D] text-[15px] leading-[1.75] mb-4">
-                                Extrait de l'actualité qui donne un aperçu du contenu...
-                            </p>
-                            <a href="{{ route('news.show', $i) }}" class="inline-flex items-center text-[#297d53] font-['Outfit'] font-medium text-[16px] hover:text-[#e6d54f] transition-colors">
-                                Lire Plus <i class="icon-graingrow-angle-right ml-2"></i>
-                            </a>
-                        </div>
-                    </article>
-                @endfor
-            </div>
-        </div>
-    </section>
-
-@endsection
-
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-    <script>
-        // Swiper Slider
-        const homeSlider = new Swiper('.homeSlider', {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            }
-        });
-
-        // Compteurs animés
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200;
-
-        const animateCounter = (counter) => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(() => animateCounter(counter), 1);
-            } else {
-                counter.innerText = target;
-            }
-        };
-
-        // Observer pour déclencher l'animation au scroll
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    animateCounter(counter);
-                    counterObserver.unobserve(counter);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(counter => counterObserver.observe(counter));
-    </script>
-
+@push('styles')
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom transitions for smoother sliding */
+        #slider {
+            transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Ensure full coverage with increased height */
+        .carousel-slide {
+            min-height: 120vh;
+        }
+
+        .absolute.inset-0 {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive adjustments for very small screens */
+        @media (max-width: 640px) {
+            .carousel-slide {
+                min-height: 100vh;
+            }
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            p {
+                font-size: 1rem !important;
+            }
+            span {
+                font-size: 0.875rem !important;
+            }
+        }
+
+        /* Accessibility focus styles */
+        button:focus {
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
+
+        /* Prevent layout shift when images load */
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Animations personnalisées pour la section À Propos */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -349,10 +61,10 @@
             }
         }
 
-        @keyframes fadeInLeft {
+        @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-100px);
+                transform: translateX(-50px);
             }
             to {
                 opacity: 1;
@@ -360,20 +72,417 @@
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInDown {
+        @keyframes slideInRight {
             from {
                 opacity: 0;
-                transform: translateY(-50px);
+                transform: translateX(50px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(0);
             }
         }
+
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slideInLeft {
+            animation: slideInLeft 0.9s ease-out forwards;
+        }
+
+        .animate-slideInRight {
+            animation: slideInRight 0.9s ease-out forwards;
+        }
+
+        .animate-float {
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+
+        .gradient-shimmer {
+            background: linear-gradient(
+                90deg,
+                #EAB308 0%,
+                #FCD34D 50%,
+                #EAB308 100%
+            );
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        .card-hover-effect {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
     </style>
+@endpush
+
+@section('content')
+    <!-- Slider Container -->
+    <div class="relative w-full overflow-hidden carousel-slide">
+        <!-- Slides -->
+        <div class="relative w-full h-full flex transition-transform duration-1000 ease-in-out" id="slider">
+            <!-- Slide 1 -->
+            <div class="min-w-full h-full relative carousel-slide">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <img src="http://static.photos/nature/1200x630/1" alt="Agriculture durable" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center px-6 md:px-12 lg:px-20">
+                    <div class="w-full max-w-5xl text-white text-center">
+                        <span class="text-yellow-400 font-semibold text-lg md:text-xl lg:text-2xl mb-3 md:mb-4 block">Bienvenue au COASP Pour une Agriculture Durable en Afrique de l'Ouest</span>
+                        <h1 class="text-white text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight">Préservons les semences paysannes et développons l'agroécologie paysanne
+                        </h1>
+                        <p class="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 max-w-4xl mx-auto">Découvrez notre engagement envers une souveraineté semencière renforcée et une agriculture équitable.</p>
+                        <a href="#" class="bg-green-700 hover:bg-white hover:text-green-700 text-white px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-4 rounded-md text-base md:text-lg lg:text-xl font-medium transition duration-300 inline-block">En Savoir Plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="min-w-full h-full relative carousel-slide">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <img src="http://static.photos/agriculture/1200x630/2" alt="Semences paysannes" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center px-6 md:px-12 lg:px-20">
+                    <div class="w-full max-w-6xl text-white text-center">
+                        <span class="text-yellow-400 font-semibold text-xl md:text-2xl lg:text-3xl mb-4 md:mb-6 block">Souveraineté Semencière Paysanne</span>
+                        <h1 class="text-white text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 md:mb-8 leading-tight">Foire de semences paysannes</h1>
+                        <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-8 md:mb-12 max-w-5xl mx-auto">Rejoignez-nous dans la préservation de notre biodiversité agricole.</p>
+                        <a href="#" class="bg-green-700 hover:bg-white hover:text-green-700 text-white px-10 py-4 md:px-12 md:py-5 lg:px-14 lg:py-6 rounded-md text-lg md:text-xl lg:text-2xl font-medium transition duration-300 inline-block">Contactez-nous</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button id="prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-green-700 hover:bg-opacity-100 text-white rounded-full p-3 transition-all duration-300 z-10">
+            <i data-feather="chevron-left" class="w-6 h-6"></i>
+        </button>
+        <button id="next" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-green-700 hover:bg-opacity-100 text-white rounded-full p-3 transition-all duration-300 z-10">
+            <i data-feather="chevron-right" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Pagination Dots -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+            <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition duration-300 slider-dot" data-index="0"></button>
+            <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition duration-300 slider-dot" data-index="1"></button>
+        </div>
+    </div>
+
+    <!-- Section Piliers d'Action -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <!-- En-tête de section -->
+            <div class="text-center mb-12">
+                <h2 class="text-yellow-500 text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Engagement Intégré pour une Agriculture Durable</h2>
+                <p class="text-gray-700 text-base md:text-lg lg:text-xl max-w-5xl mx-auto">Piliers d'Action du COASP : Cultiver, Renforcer, Plaider et Communiquer Semences Paysannes en Action</p>
+            </div>
+
+            <!-- Grille de cartes -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Carte 1: Foires et Conférences -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="http://static.photos/nature/seeds/400x300/1" alt="Foires et Conférences" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <!-- Icône étoile verte -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Foires et Conférences</h3>
+
+                        <p class="text-gray-600 text-sm mb-6">Organisation de foires et de conférences pour favoriser la concertation entre les acteurs de la semence paysanne. Sensibilisation des agriculteurs, des organisations locales et de la société civile aux enjeux de la souveraineté semencière.</p>
+
+                        <a href="#" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md transition duration-300">
+                            Voir Plus <span class="ml-2">»</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte 2: Formation et Renforcement des Capacités -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="http://static.photos/agriculture/farming/400x300/2" alt="Formation et Renforcement" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <!-- Icône étoile verte -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">FORMATION ET RENFORCEMENT DES CAPACITÉS</h3>
+
+                        <p class="text-gray-600 text-sm mb-6">Dispensation de formations pratiques en Agroécologie Renforcement des compétences des agriculteurs en gestion durable des semences.</p>
+
+                        <a href="#" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md transition duration-300">
+                            Voir Plus <span class="ml-2">»</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte 3: Plaidoyer et Veille Juridique -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="http://static.photos/activism/protest/400x300/3" alt="Plaidoyer et Veille Juridique" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <!-- Icône étoile verte -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">PLAIDOYER ET VEILLE JURIDIQUE</h3>
+
+                        <p class="text-gray-600 text-sm mb-6">Engagement dans des actions de plaidoyer auprès des institutions, Mise en place d'une veille juridique et réglementaire sur les semences paysannes pour protéger les droits des agriculteurs.</p>
+
+                        <a href="#" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md transition duration-300">
+                            Voir Plus <span class="ml-2">»</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carte 4: Communication -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="http://static.photos/people/cooking/400x300/4" alt="Communication" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <!-- Icône étoile verte -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">COMMUNICATION</h3>
+
+                        <p class="text-gray-600 text-sm mb-6">Utilisation d'outils de communication pour rendre les activités du COASP plus visibles et partager des informations sur les pratiques agroécologiques.</p>
+
+                        <a href="#" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md transition duration-300">
+                            Voir Plus <span class="ml-2">»</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À Propos - Nouvelle section avec animations -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Colonne Gauche: Images avec overlay -->
+                <div class="relative pb-20 md:pb-24 animate-slideInLeft">
+                    <!-- Image 1 (en haut) -->
+                    <div class="w-full mb-3 group overflow-hidden rounded-lg">
+                        <img src="http://static.photos/agriculture/field/800x500/1" alt="Agriculture paysanne" class="w-full h-72 md:h-80 lg:h-96 rounded-lg shadow-xl object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    </div>
+
+                    <!-- Image 2 (en bas) -->
+                    <div class="w-full group overflow-hidden rounded-lg">
+                        <img src="http://static.photos/agriculture/market/800x400/2" alt="Marché local" class="w-full h-56 md:h-64 lg:h-72 rounded-lg shadow-xl object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    </div>
+
+                    <!-- Rectangle jaune avec gradient animé et effet shimmer -->
+                    <div class="absolute left-0 w-10/12 md:w-9/12 lg:w-4/5 gradient-shimmer rounded-tr-3xl shadow-2xl hover:shadow-yellow-500/50 transition-all duration-500 animate-float" style="top: 65%; min-height: 280px;">
+                        <div class="p-6 md:p-7 lg:p-9 bg-yellow-400/95 rounded-tr-3xl backdrop-blur-sm">
+                            <p class="text-white text-xs md:text-sm lg:text-base leading-relaxed mb-5 md:mb-6 font-normal drop-shadow-md">
+                                La défense des principes vrais de l'agroécologie est importante. Il ne s'agit pas de suivre une mode, mais de redresser le déséquilibre monstrueux causé par le système marchand qui a amené à tant d'injustices, et de rétablir l'autonomie.
+                            </p>
+
+                            <!-- Profil auteur -->
+                            <div class="flex items-center space-x-2 md:space-x-3 group">
+                                <img src="http://static.photos/people/avatar/100x100/1" alt="Alihou Ndiaye" class="w-10 h-10 md:w-14 md:h-14 rounded-full border-4 border-white object-cover shadow-lg transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                                <div>
+                                    <h4 class="text-white font-bold text-sm md:text-base lg:text-lg drop-shadow-md">Alihou Ndiaye</h4>
+                                    <p class="text-white/90 text-xs md:text-sm drop-shadow-md">coordinateur sous-régional COASP</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne Droite: Contenu -->
+                <div class="space-y-6 md:space-y-8 animate-slideInRight">
+                    <!-- En-tête -->
+                    <div class="animate-fadeInUp">
+                        <p class="text-yellow-500 font-semibold text-xs md:text-sm mb-2 uppercase tracking-wider animate-pulse">À PROPOS DE NOTRE ORGANISATION</p>
+                        <h2 class="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Qu'est ce que l'AEP?</h2>
+                        <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                            À la différence de l'agriculture conventionnelle, l'agroécologie paysanne renforce et maintien la biodiversité. Elle est nourrie par le patrimoine immatériel et matériel légué à l'humanité.
+                        </p>
+                    </div>
+
+                    <!-- Carte 1: Agriculture & Écologie -->
+                    <div class="bg-white rounded-xl p-5 md:p-6 border-2 border-gray-100 shadow-lg card-hover-effect hover:border-green-200 hover:shadow-2xl hover:shadow-green-100/50 group">
+                        <div class="flex items-start space-x-3 md:space-x-4">
+                            <!-- Icône -->
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center shadow-md transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                                    <svg class="w-6 h-6 md:w-7 md:h-7 text-green-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Contenu -->
+                            <div class="flex-1">
+                                <h3 class="text-gray-900 text-lg md:text-xl font-bold mb-2 group-hover:text-green-700 transition-colors duration-300">Agriculture & Écologie</h3>
+                                <p class="text-gray-600 text-xs md:text-sm italic leading-relaxed">
+                                    Fusionnant harmonieusement l'agriculture et l'écologie, nous promouvons des pratiques durables et respectueuses de l'environnement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 2: Cultures & Fruits -->
+                    <div class="bg-white rounded-xl p-5 md:p-6 border-2 border-gray-100 shadow-lg card-hover-effect hover:border-green-200 hover:shadow-2xl hover:shadow-green-100/50 group">
+                        <div class="flex items-start space-x-3 md:space-x-4">
+                            <!-- Icône -->
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center shadow-md transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                                    <svg class="w-6 h-6 md:w-7 md:h-7 text-green-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Contenu -->
+                            <div class="flex-1">
+                                <h3 class="text-gray-900 text-lg md:text-xl font-bold mb-2 group-hover:text-green-700 transition-colors duration-300">Cultures & Fruits</h3>
+                                <p class="text-gray-600 text-xs md:text-sm italic leading-relaxed">
+                                    Nous travaillons main dans la main avec les agriculteurs locaux pour encourager des méthodes de culture innovantes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bouton avec effet animé -->
+                    <div class="pt-2">
+                        <a href="#" class="relative inline-block bg-gradient-to-r from-green-700 to-green-600 hover:from-green-800 hover:to-green-700 text-white font-semibold px-6 py-3 md:px-8 md:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-green-500/50 transform hover:-translate-y-1 hover:scale-105 text-sm md:text-base group overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">
+                            En savoir plus
+                            <svg class="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('slider');
+            const slides = document.querySelectorAll('#slider > div');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            let autoSlideInterval;
+
+            // Initialize slider
+            function initSlider() {
+                updateSlider();
+                startAutoSlide();
+            }
+
+            // Update slider position
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                // Update active dot
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('bg-opacity-100', index === currentIndex);
+                    dot.classList.toggle('bg-opacity-50', index !== currentIndex);
+                });
+            }
+
+            // Go to specific slide
+            function goToSlide(index) {
+                currentIndex = (index + slideCount) % slideCount;
+                updateSlider();
+                resetAutoSlide();
+            }
+
+            // Next slide
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            // Previous slide
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+
+            // Auto slide
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    goToSlide(parseInt(dot.getAttribute('data-index')));
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+            });
+
+            // Pause on hover
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+
+            // Initialize
+            initSlider();
+
+            // Initialize Feather icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
 @endpush

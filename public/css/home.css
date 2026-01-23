@@ -1,0 +1,38 @@
+    /* Custom transitions for smoother sliding */
+#slider {
+    transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Ensure full coverage */
+.absolute.inset-0 {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    p {
+        font-size: 1rem !important;
+    }
+    span {
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Accessibility focus styles */
+button:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* Prevent layout shift when images load */
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

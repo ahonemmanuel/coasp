@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="COASP - Pour une Agriculture Durable en Afrique de l'Ouest">
     <title>@yield('title', 'COASP - Agriculture & Écologie')</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/ho.css') }}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     @stack('styles')
 </head>
 <body class="font-poppins">
