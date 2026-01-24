@@ -127,6 +127,30 @@
         .card-hover-effect:hover {
             transform: translateY(-8px) scale(1.02);
         }
+
+        /* Styles pour la section équipe */
+        .team-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slideInUp {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
     </style>
 @endpush
 
@@ -197,7 +221,6 @@
                         <img src="http://static.photos/nature/seeds/400x300/1" alt="Foires et Conférences" class="w-full h-64 object-cover">
                     </div>
                     <div class="p-6 text-center">
-                        <!-- Icône étoile verte -->
                         <div class="flex justify-center mb-4">
                             <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -220,7 +243,6 @@
                         <img src="http://static.photos/agriculture/farming/400x300/2" alt="Formation et Renforcement" class="w-full h-64 object-cover">
                     </div>
                     <div class="p-6 text-center">
-                        <!-- Icône étoile verte -->
                         <div class="flex justify-center mb-4">
                             <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -243,7 +265,6 @@
                         <img src="http://static.photos/activism/protest/400x300/3" alt="Plaidoyer et Veille Juridique" class="w-full h-64 object-cover">
                     </div>
                     <div class="p-6 text-center">
-                        <!-- Icône étoile verte -->
                         <div class="flex justify-center mb-4">
                             <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -266,7 +287,6 @@
                         <img src="http://static.photos/people/cooking/400x300/4" alt="Communication" class="w-full h-64 object-cover">
                     </div>
                     <div class="p-6 text-center">
-                        <!-- Icône étoile verte -->
                         <div class="flex justify-center mb-4">
                             <svg class="w-12 h-12 text-green-600 fill-current" viewBox="0 0 24 24">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -286,7 +306,7 @@
         </div>
     </section>
 
-    <!-- Section À Propos - Nouvelle section avec animations -->
+    <!-- Section À Propos -->
     <section class="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -335,7 +355,6 @@
                     <!-- Carte 1: Agriculture & Écologie -->
                     <div class="bg-white rounded-xl p-5 md:p-6 border-2 border-gray-100 shadow-lg card-hover-effect hover:border-green-200 hover:shadow-2xl hover:shadow-green-100/50 group">
                         <div class="flex items-start space-x-3 md:space-x-4">
-                            <!-- Icône -->
                             <div class="flex-shrink-0">
                                 <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center shadow-md transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
                                     <svg class="w-6 h-6 md:w-7 md:h-7 text-green-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -344,7 +363,6 @@
                                 </div>
                             </div>
 
-                            <!-- Contenu -->
                             <div class="flex-1">
                                 <h3 class="text-gray-900 text-lg md:text-xl font-bold mb-2 group-hover:text-green-700 transition-colors duration-300">Agriculture & Écologie</h3>
                                 <p class="text-gray-600 text-xs md:text-sm italic leading-relaxed">
@@ -357,7 +375,6 @@
                     <!-- Carte 2: Cultures & Fruits -->
                     <div class="bg-white rounded-xl p-5 md:p-6 border-2 border-gray-100 shadow-lg card-hover-effect hover:border-green-200 hover:shadow-2xl hover:shadow-green-100/50 group">
                         <div class="flex items-start space-x-3 md:space-x-4">
-                            <!-- Icône -->
                             <div class="flex-shrink-0">
                                 <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center shadow-md transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
                                     <svg class="w-6 h-6 md:w-7 md:h-7 text-green-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -366,7 +383,6 @@
                                 </div>
                             </div>
 
-                            <!-- Contenu -->
                             <div class="flex-1">
                                 <h3 class="text-gray-900 text-lg md:text-xl font-bold mb-2 group-hover:text-green-700 transition-colors duration-300">Cultures & Fruits</h3>
                                 <p class="text-gray-600 text-xs md:text-sm italic leading-relaxed">
@@ -392,6 +408,106 @@
             </div>
         </div>
     </section>
+
+    <!-- Section Équipe -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <!-- En-tête -->
+            <div class="text-center mb-12 animate-slideInUp">
+                <p class="text-yellow-500 font-semibold text-sm md:text-base mb-2 uppercase tracking-wide">Excellent membre de l'équipe</p>
+                <h2 class="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-bold">Rencontrez notre superbe équipe</h2>
+            </div>
+
+            <!-- Grille des membres - 4 colonnes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Carte 1: Alihou Ndiaye -->
+                <div class="relative group team-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                        <!-- Image -->
+                        <div class="relative h-72 overflow-hidden">
+                            <img src="http://static.photos/people/portrait/400x600/1" alt="Alihou Ndiaye" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+
+                            <!-- Overlay gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                            <!-- Icônes sociales verticales - Apparaissent au hover -->
+                            <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                                <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden">
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300">
+                                        <i class="fab fa-facebook-f text-sm"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                        <i class="fab fa-twitter text-sm"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                        <i class="fab fa-linkedin-in text-sm"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                        <i class="fab fa-instagram text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Bouton de partage - Apparaît au hover -->
+                            <button class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100">
+                                <i class="fas fa-share-alt text-sm"></i>
+                            </button>
+                        </div>
+
+                        <!-- Informations -->
+                        <div class="p-4 bg-gradient-to-br from-gray-50 to-white">
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">Alihou Ndiaye</h3>
+                            <p class="text-gray-600 text-xs">coordinateur sous-régional COASP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 2: Omer Richard Métogbé Agoligan -->
+                <div class="relative group team-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                        <!-- Image -->
+                        <div class="relative h-72 overflow-hidden">
+                            <img src="http://static.photos/people/portrait/400x600/2" alt="Omer Richard Métogbé Agoligan" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+
+                            <!-- Overlay gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                            <!-- Icônes sociales verticales - Apparaissent au hover -->
+                            <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                                <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden">
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300">
+                                        <i class="fab fa-facebook-f text-sm"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                        <i class="fab fa-twitter text-sm"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                        <i class="fab fa-linkedin-in text-sm"></i>
+                                    </a>
+                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                        <i class="fab fa-instagram text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Bouton de partage - Apparaît au hover -->
+                            <button class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100">
+                                <i class="fas fa-share-alt text-sm"></i>
+                            </button>
+                        </div>
+
+                        <!-- Informations -->
+                        <div class="p-4 bg-gradient-to-br from-gray-50 to-white">
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">Omer Richard Métogbé Agoligan</h3>
+                            <p class="text-gray-600 text-xs">Assistant du coordinateur sous-régional COASP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vous pouvez ajouter les cartes 3 et 4 ici selon le même modèle -->
+            </div>
+        </div>
+    </section>
 @endsection
 
 @push('scripts')
@@ -407,41 +523,34 @@
             const slideCount = slides.length;
             let autoSlideInterval;
 
-            // Initialize slider
             function initSlider() {
                 updateSlider();
                 startAutoSlide();
             }
 
-            // Update slider position
             function updateSlider() {
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-                // Update active dot
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('bg-opacity-100', index === currentIndex);
                     dot.classList.toggle('bg-opacity-50', index !== currentIndex);
                 });
             }
 
-            // Go to specific slide
             function goToSlide(index) {
                 currentIndex = (index + slideCount) % slideCount;
                 updateSlider();
                 resetAutoSlide();
             }
 
-            // Next slide
             function nextSlide() {
                 goToSlide(currentIndex + 1);
             }
 
-            // Previous slide
             function prevSlide() {
                 goToSlide(currentIndex - 1);
             }
 
-            // Auto slide
             function startAutoSlide() {
                 autoSlideInterval = setInterval(nextSlide, 5000);
             }
@@ -451,7 +560,6 @@
                 startAutoSlide();
             }
 
-            // Event listeners
             nextBtn.addEventListener('click', nextSlide);
             prevBtn.addEventListener('click', prevSlide);
 
@@ -461,13 +569,11 @@
                 });
             });
 
-            // Keyboard navigation
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight') nextSlide();
                 if (e.key === 'ArrowLeft') prevSlide();
             });
 
-            // Pause on hover
             slider.addEventListener('mouseenter', () => {
                 clearInterval(autoSlideInterval);
             });
@@ -476,10 +582,8 @@
                 startAutoSlide();
             });
 
-            // Initialize
             initSlider();
 
-            // Initialize Feather icons
             if (typeof feather !== 'undefined') {
                 feather.replace();
             }
