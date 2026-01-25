@@ -464,7 +464,7 @@
                         <!-- Slide 13 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/OSIWA.png"
+                                <img src="{{ asset('images/q18.png') }}"
                                      alt="OSIWA"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -473,7 +473,7 @@
                         <!-- Slide 14 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/New-Field.png"
+                                <img src="{{ asset('images/q19.png') }}"
                                      alt="New Field"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -482,7 +482,7 @@
                         <!-- Slide 15 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/MISEREOR-300x92.png"
+                                <img src="{{ asset('images/q20.png') }}"
                                      alt="MISEREOR"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -491,7 +491,7 @@
                         <!-- Slide 16 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/logo-via-campesina-fr-300x255.png"
+                                <img src="{{ asset('images/q21.png') }}"
                                      alt="La Via Campesina"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -500,7 +500,7 @@
                         <!-- Slide 17 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/logo-fondation-Nature-et-decouvertes-300x135.jpg"
+                                <img src="{{ asset('images/q22.jpg') }}"
                                      alt="Fondation Nature & Découvertes"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -509,7 +509,7 @@
                         <!-- Slide 18 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/Logo-Enda-Pronat.jpeg"
+                                <img src="{{ asset('images/q23.jpeg') }}"
                                      alt="Enda Pronat"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -518,7 +518,7 @@
                         <!-- Slide 19 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/Logo-ACRA-300x123.png"
+                                <img src="{{ asset('images/q24.png') }}"
                                      alt="ACRA"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -527,7 +527,7 @@
                         <!-- Slide 20 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/DYTAES.jpeg"
+                                <img src="{{ asset('images/q25.jpeg') }}"
                                      alt="DYTAES"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -536,7 +536,7 @@
                         <!-- Slide 21 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/Lea-Nature-300x137.jpeg"
+                                <img src="{{ asset('images/q26.jpeg') }}"
                                      alt="Fondation Léa Nature"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -545,7 +545,7 @@
                         <!-- Slide 22 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/LA-VIA-CAMPESINA.jpeg"
+                                <img src="h{{ asset('images/q27.jpeg') }}"
                                      alt="La Via Campesina"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -554,7 +554,7 @@
                         <!-- Slide 23 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/INADES-FORMATION-300x83.png"
+                                <img src="{{ asset('images/q28.png') }}"
                                      alt="INADES FORMATION"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -563,7 +563,7 @@
                         <!-- Slide 24 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/HEKS-EPER-300x99.jpeg"
+                                <img src="{{ asset('images/q29.jpeg') }}"
                                      alt="HEKS EPER"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -572,7 +572,7 @@
                         <!-- Slide 25 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/Heidehof-Stiftung-300x120.png"
+                                <img src="{{ asset('images/q30.png') }}"
                                      alt="Heidehof Stiftung"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -581,7 +581,7 @@
                         <!-- Slide 26 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/Fondation-de-France-300x131.jpeg"
+                                <img src="{{ asset('images/q31.jpeg') }}"
                                      alt="Fondation de France"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -590,7 +590,7 @@
                         <!-- Slide 27 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/FIAN-international-300x110.jpeg"
+                                <img src="{{ asset('images/q32.jpeg') }}"
                                      alt="FIAN International"
                                      class="max-h-full w-auto object-contain">
                             </div>
@@ -599,7 +599,7 @@
                         <!-- Slide 28 -->
                         <div class="swiper-slide">
                             <div class="flex items-center justify-center h-32 p-4">
-                                <img src="https://www.coasp.org/wp-content/uploads/2024/05/FGC-300x157.jpeg"
+                                <img src="{{ asset('images/q33.jpeg') }}"
                                      alt="FGC"
                                      class="max-h-full w-auto object-contain">
                             </div>
