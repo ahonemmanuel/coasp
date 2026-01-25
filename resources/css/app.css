@@ -48,22 +48,6 @@ body {
     position: static !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-outfit);
-    color: var(--color-heading);
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-h1 { font-size: 3rem; }
-h2 { font-size: 2.25rem; }
-h3 { font-size: 1.875rem; }
-
-@media (min-width: 1024px) {
-    h1 { font-size: 5rem; }
-    h2 { font-size: 4rem; }
-    h3 { font-size: 3rem; }
-}
 
 a {
     transition: color 0.3s ease;
