@@ -9,6 +9,26 @@
 @endpush
 
 @section('content')
+
+    <style>
+        .hero-overlay {
+            background-color: rgba(157, 205, 151, 0.7);
+        }
+    </style>
+    <!-- Hero Section -->
+    <section class="hero-bg pt-32 pb-20 md:pt-40 md:pb-32 relative">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">À propos de nous</h1>
+            <div class="text-white text-lg">
+                <span class="inline-flex items-center">
+                    <a href="/" class="hover:text-yellow-300">Accueil</a>
+                    <i data-feather="chevron-right" class="mx-2 w-4 h-4" ></i>
+                    <span>À propos</span>
+                </span>
+            </div>
+        </div>
+    </section>
     <!-- Section Historique -->
     <section class="py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">

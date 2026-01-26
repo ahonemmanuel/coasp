@@ -242,7 +242,7 @@
                         <h1 class="text-white text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight">Préservons les semences paysannes et développons l'agroécologie paysanne
                         </h1>
                         <p class="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 max-w-4xl mx-auto">Découvrez notre engagement envers une souveraineté semencière renforcée et une agriculture équitable.</p>
-                        <a href="#" class="bg-green-700 hover:bg-white hover:text-green-700 text-white px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-4 rounded-md text-base md:text-lg lg:text-xl font-medium transition duration-300 inline-block">En Savoir Plus</a>
+                        <a href="{{ route('about') }}" class="bg-green-700 hover:bg-white hover:text-green-700 text-white px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-4 rounded-md text-base md:text-lg lg:text-xl font-medium transition duration-300 inline-block">En Savoir Plus</a>
                     </div>
                 </div>
             </div>
@@ -256,7 +256,7 @@
                         <span class="text-yellow-400 font-semibold text-base md:text-lg lg:text-xl mb-3 md:mb-4 block">Souveraineté Semencière Paysanne</span>
                         <h1 class="text-white text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight">Foire de semences paysannes</h1>
                         <p class="text-base md:text-lg lg:text-xl xl:text-2xl mb-6 md:mb-8 max-w-5xl mx-auto">Rejoignez-nous dans la préservation de notre biodiversité agricole.</p>
-                        <a href="#" class="bg-green-700 hover:bg-white hover:text-green-700 text-white px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-md text-base md:text-lg lg:text-xl font-medium transition duration-300 inline-block">Contactez-nous</a>
+                        <a href="{{ route('contact') }}" class="bg-green-700 hover:bg-white hover:text-green-700 text-white px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 rounded-md text-base md:text-lg lg:text-xl font-medium transition duration-300 inline-block">Contactez-nous</a>
                     </div>
                 </div>
             </div>
@@ -467,7 +467,7 @@
 
                     <!-- Bouton avec effet animé -->
                     <div class="pt-2">
-                        <a href="#" class="relative inline-block bg-gradient-to-r from-green-700 to-green-600 hover:from-green-800 hover:to-green-700 text-black font-semibold px-6 py-3 md:px-8 md:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-green-500/50 transform hover:-translate-y-1 hover:scale-105 text-sm md:text-base group overflow-hidden">
+                        <a href="{{ route('about') }}" class="relative inline-block bg-gradient-to-r from-green-700 to-green-600 hover:from-green-800 hover:to-green-700 text-black font-semibold px-6 py-3 md:px-8 md:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-green-500/50 transform hover:-translate-y-1 hover:scale-105 text-sm md:text-base group overflow-hidden">
                         <span class="relative z-10 flex items-center gap-2">
                             En savoir plus
                             <svg class="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -499,7 +499,7 @@
                 <div class="swiper-wrapper">
                     <!-- Slide 1 - Foire 2014 -->
                     <div class="swiper-slide">
-                        <a href="https://www.coasp.org/wp-content/uploads/2024/01/ASPSP_2014_journal_foire.pdf" target="_blank" class="block">
+                        <a href="{{ asset('docs/ASPSP_2014_journal_foire.pdf') }}" target="_blank" class="block">
                             <div class="swiper-slide-image" style="background-image: url('{{ asset('images/foire_2014.jpg') }}')">
                                 <div class="image-overlay">
                                     <div class="text-center text-white px-6">
@@ -516,7 +516,7 @@
 
                     <!-- Slide 2 - 7ème Edition 2022 -->
                     <div class="swiper-slide">
-                        <a href="https://www.coasp.org/wp-content/uploads/2024/01/Declaration-de-la-7eme-edition-Foire-COASP-2022.pdf" target="_blank" class="block">
+                        <a href="{{ asset('docs/Declaration-de-la-7eme-edition-Foire-COASP-2022.pdf') }}" target="_blank" class="block">
                             <div class="swiper-slide-image" style="background-image: url('{{ asset('images/7eme_Edition_2022.jpg') }}')">
                                 <div class="image-overlay">
                                     <div class="text-center text-white px-6">
@@ -533,7 +533,7 @@
 
                     <!-- Slide 3 - Déclaration Djimini 2018 (FR) -->
                     <div class="swiper-slide">
-                        <a href="https://www.coasp.org/wp-content/uploads/2024/01/Declaration-Djimini-2018-finale.pdf" target="_blank" class="block">
+                        <a href="{{asset('docs/Declaration-Djimini-2018-finale.pdf')}}" target="_blank" class="block">
                             <div class="swiper-slide-image" style="background-image: url('{{ asset('images/Declaration_Djimini_2018.jpg') }}')">
                                 <div class="image-overlay">
                                     <div class="text-center text-white px-6">
@@ -550,7 +550,7 @@
 
                     <!-- Slide 4 - Déclaration Djimini 2018 (EN) -->
                     <div class="swiper-slide">
-                        <a href="https://www.coasp.org/wp-content/uploads/2024/01/Declaration-Djimini-Peasant-Seed-Fair-2018-English.pdf" target="_blank" class="block">
+                        <a href="{{ asset('docs/Declaration-Djimini-Peasant-Seed-Fair-2018-English.pdf') }}" target="_blank" class="block">
                             <div class="swiper-slide-image" style="background-image: url('{{ asset('images/Djimini_Declaration_2018.jpg') }}')">
                                 <div class="image-overlay">
                                     <div class="text-center text-white px-6">
@@ -567,7 +567,7 @@
 
                     <!-- Slide 5 - 4ème Edition -->
                     <div class="swiper-slide">
-                        <a href="https://www.coasp.org/wp-content/uploads/2024/01/DECLARATION_Foire_Ouest_Africaine_4eme-Edition.pdf" target="_blank" class="block">
+                        <a href="{{ asset('docs/DECLARATION_Foire_Ouest_Africaine_4eme-Edition.pdf') }}" target="_blank" class="block">
                             <div class="swiper-slide-image" style="background-image: url('{{ asset('images/4eme_Edition.jpg') }}')">
                                 <div class="image-overlay">
                                     <div class="text-center text-white px-6">
@@ -584,7 +584,7 @@
 
                     <!-- Slide 6 - Foire 2011 -->
                     <div class="swiper-slide">
-                        <a href="https://www.coasp.org/wp-content/uploads/2024/01/Foire-semences-Paysannes-2011-Declaration.pdf" target="_blank" class="block">
+                        <a href="{{ asset('docs/Foire-semences-Paysannes-2011-Declaration.pdf') }}" target="_blank" class="block">
                             <div class="swiper-slide-image" style="background-image: url('{{ asset('images/Foire_2011.jpg') }}')">
                                 <div class="image-overlay">
                                     <div class="text-center text-white px-6">
@@ -601,7 +601,7 @@
 
                     <!-- Slide 7 - 3ème Foire Sous-Régionale -->
                     <div class="swiper-slide">
-                        <a href="https://www.coasp.org/wp-content/uploads/2024/01/grain-4545-3eme-foire-sous-regionale-ouest-africaine-des-semences-paysannes.pdf" target="_blank" class="block">
+                        <a href="{{ asset('docs/grain-4545-3eme-foire-sous-regionale-ouest-africaine-des-semences-paysannes.pdf') }}" target="_blank" class="block">
                             <div class="swiper-slide-image" style="background-image: url('{{ asset('images/3eme_Foire_Sous-Regionale.jpg') }}')">
                                 <div class="image-overlay">
                                     <div class="text-center text-white px-6">

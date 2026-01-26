@@ -52,15 +52,18 @@ class ContactController extends Controller
                 'subject' => $request->subject,
                 'user_message' => $request->message,
             ], function($message) use ($request) {
-                $message->to('info@coasp.org')
+                $message->to('emmanuelahonsu@gmail.com')
                     ->subject('Nouveau message de contact: ' . $request->subject)
                     ->replyTo($request->email, $request->name);
             });
 
             return redirect()->back()
+
                 ->with('success', 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.');
 
         } catch (\Exception $e) {
+            dd($e->getMessage());
+
             return redirect()->back()
                 ->with('error', 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.')
                 ->withInput();
