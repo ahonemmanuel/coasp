@@ -1,13 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DocumentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DocController;
 use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +18,31 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
+// Routes Admin - Connexion
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('login.post');
+
+    // Routes protégées par le middleware admin
+    Route::middleware('admin')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+    });
+
+    // Gestion des documents
+    Route::prefix('documents')->name('documents.')->group(function () {
+        Route::get('/', [DocumentController::class, 'index'])->name('index');
+        Route::get('/create', [DocumentController::class, 'create'])->name('create');
+        Route::post('/', [DocumentController::class, 'store'])->name('store');
+        Route::get('/{document}/edit', [DocumentController::class, 'edit'])->name('edit');
+        Route::put('/{document}', [DocumentController::class, 'update'])->name('update');
+        Route::delete('/{document}', [DocumentController::class, 'destroy'])->name('destroy');
+        Route::patch('/{document}/toggle-status', [DocumentController::class, 'toggleStatus'])->name('toggle-status');
+        Route::patch('/{document}/toggle-featured', [DocumentController::class, 'toggleFeatured'])->name('toggle-featured');
+    });
+
+});
 
 // Page d'accueil
 
@@ -27,17 +54,9 @@ Route::get('/', function () {
 // À propos
 Route::prefix('qui-sommes-nous')->group(function () {
     Route::get('/', [AboutController::class, 'index'])->name('about');
-    Route::get('/mission', [AboutController::class, 'mission'])->name('about.mission');
-    Route::get('/vision', [AboutController::class, 'vision'])->name('about.vision');
-    Route::get('/equipe', [AboutController::class, 'team'])->name('about.team');
-    Route::get('/equipe/{slug}', [AboutController::class, 'teamMember'])->name('about.team.member');
-});
+  });
 
-// Services / Axes d'intervention
-Route::prefix('services')->group(function () {
-    Route::get('/', [ServiceController::class, 'index'])->name('services');
-    Route::get('/{slug}', [ServiceController::class, 'show'])->name('services.show');
-});
+
 
 // Ressources
 Route::prefix('ressources')->group(function () {
@@ -47,9 +66,7 @@ Route::prefix('ressources')->group(function () {
     Route::get('/actualites/categorie/{slug}', [NewsController::class, 'category'])->name('news.category');
 
     // Documents utiles
-    Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
-    Route::get('/documents/{slug}', [DocumentController::class, 'show'])->name('documents.show');
-    Route::get('/documents/telecharger/{id}', [DocumentController::class, 'download'])->name('documents.download');
+    Route::get('/documents', [DocController::class, 'index'])->name('documents.index');
 
     // Galerie
     Route::get('/galerie', [GalleryController::class, 'index'])->name('gallery.index');
