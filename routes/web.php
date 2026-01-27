@@ -58,6 +58,10 @@ Route::prefix('qui-sommes-nous')->group(function () {
 
 
 
+// Route de téléchargement des documents
+Route::get('/documents/{document}/download', [DocController::class, 'download'])
+    ->name('documents.download');
+
 // Ressources
 Route::prefix('ressources')->group(function () {
     // Actualités

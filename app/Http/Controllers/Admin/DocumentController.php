@@ -58,6 +58,7 @@ class DocumentController extends Controller
      */
     public function store(DocumentRequest $request)
     {
+
         try {
             $data = $request->validated();
 

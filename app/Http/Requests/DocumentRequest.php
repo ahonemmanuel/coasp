@@ -29,6 +29,7 @@ class DocumentRequest extends FormRequest
             'order' => ['nullable', 'integer', 'min:0'],
         ];
 
+
         // Validation du fichier uniquement lors de la création ou si un nouveau fichier est uploadé
         if ($this->isMethod('post') || $this->hasFile('file')) {
             $rules['file'] = [
@@ -38,6 +39,7 @@ class DocumentRequest extends FormRequest
                 'max:10240', // 10MB max
             ];
         }
+
 
         return $rules;
     }
