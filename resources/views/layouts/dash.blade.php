@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Dashboard Agronomie')</title>
+    <title>@yield('title', 'Dashboard Admin - AgroOrg')</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,15 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        @layer utilities {
-            .scrollbar-hide::-webkit-scrollbar {
-                display: none;
-            }
-
-            .scrollbar-hide {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 
@@ -36,7 +33,7 @@
 
         <!-- Logo -->
         <div class="flex items-center justify-between h-16 px-6 bg-green-900">
-            <a href="#" class="flex items-center space-x-2">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-2">
                 <i class="fas fa-leaf text-2xl"></i>
                 <span class="text-xl font-bold">AgroOrg</span>
             </a>
@@ -47,59 +44,26 @@
 
         <!-- Navigation -->
         <nav class="mt-6 px-4 overflow-y-auto scrollbar-hide h-[calc(100vh-8rem)]">
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-green-700 hover:bg-green-700 transition-colors mb-2">
+            <a href="{{ route('admin.dashboard') }}"
+               class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors mb-2">
                 <i class="fas fa-home"></i>
                 <span>Tableau de bord</span>
             </a>
 
-            <a href="{{ route('admin.documents.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-seedling"></i>
-                <span>gestion des Documents</span>
-            </a>
-
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-mountain"></i>
-                <span>Analyse des sols</span>
-            </a>
-
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-cloud-sun"></i>
-                <span>Météo</span>
-            </a>
-
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-tractor"></i>
-                <span>Équipements</span>
-            </a>
-
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-chart-line"></i>
-                <span>Statistiques</span>
-            </a>
-
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
+            <a href="{{ route('admin.documents.index') }}"
+               class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.documents.*') ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors mb-2">
                 <i class="fas fa-file-alt"></i>
-                <span>Rapports</span>
+                <span>Documents</span>
             </a>
 
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-users"></i>
-                <span>Équipe</span>
-            </a>
-
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-bell"></i>
-                <span>Alertes</span>
-                <span class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1">3</span>
-            </a>
-
-            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-700 transition-colors mb-2">
-                <i class="fas fa-cog"></i>
-                <span>Paramètres</span>
+            <a href="{{ route('admin.articles.index') }}"
+               class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.articles.*') ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors mb-2">
+                <i class="fas fa-newspaper"></i>
+                <span>Articles</span>
             </a>
         </nav>
 
-        <!-- Footer Sidebar -->
+        <!-- Footer Sidebar avec déconnexion -->
         <div class="absolute bottom-0 left-0 right-0 p-4 bg-green-900">
             <div class="flex items-center space-x-3 px-4 py-2">
                 <img src="https://ui-avatars.com/api/?name=Admin&background=4ade80&color=fff"
@@ -109,9 +73,12 @@
                     <p class="text-sm font-semibold">Administrateur</p>
                     <p class="text-xs text-gray-300">admin@agroorg.com</p>
                 </div>
-                <button class="hover:text-gray-300" title="Déconnexion">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
+                <form method="POST" action="{{ route('admin.logout') }}" class="m-0">
+                    @csrf
+                    <button type="submit" class="hover:text-red-400 transition-colors" title="Déconnexion">
+                        <i class="fas fa-sign-out-alt text-lg"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </aside>
@@ -131,127 +98,51 @@
             </button>
 
             <!-- Titre de la page -->
-            <div class="flex-1 md:flex-none">
+            <div class="flex-1">
                 <h1 class="text-xl font-semibold text-gray-800 ml-4 md:ml-0">
                     @yield('page-title', 'Tableau de bord')
                 </h1>
             </div>
 
-            <!-- Actions Header -->
+            <!-- Actions Header - Déconnexion rapide -->
             <div class="flex items-center space-x-4">
-
-                <!-- Recherche (masqué sur mobile) -->
-                <div class="hidden lg:block">
-                    <div class="relative">
-                        <input type="text"
-                               placeholder="Rechercher..."
-                               class="w-64 px-4 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                    </div>
-                </div>
-
-                <!-- Notifications -->
-                <div class="relative">
-                    <button class="relative text-gray-600 hover:text-gray-900" onclick="toggleNotifications()">
-                        <i class="fas fa-bell text-xl"></i>
-                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+                <!-- Bouton déconnexion simple -->
+                <form method="POST" action="{{ route('admin.logout') }}" class="m-0">
+                    @csrf
+                    <button type="submit" class="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="hidden md:inline">Déconnexion</span>
                     </button>
-
-                    <!-- Dropdown notifications -->
-                    <div id="notificationsDropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
-                        <div class="p-4 border-b border-gray-200">
-                            <h3 class="text-sm font-semibold text-gray-800">Notifications</h3>
-                        </div>
-
-                        <div class="max-h-96 overflow-y-auto">
-                            <a href="#" class="block p-4 hover:bg-gray-50 border-b border-gray-100">
-                                <div class="flex items-start space-x-3">
-                                    <div class="bg-green-100 p-2 rounded-full">
-                                        <i class="fas fa-seedling text-green-600 text-sm"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-sm font-medium text-gray-800">Nouvelle culture ajoutée</p>
-                                        <p class="text-xs text-gray-500 mt-1">Il y a 2 heures</p>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="#" class="block p-4 hover:bg-gray-50 border-b border-gray-100">
-                                <div class="flex items-start space-x-3">
-                                    <div class="bg-yellow-100 p-2 rounded-full">
-                                        <i class="fas fa-exclamation-triangle text-yellow-600 text-sm"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-sm font-medium text-gray-800">Alerte météo</p>
-                                        <p class="text-xs text-gray-500 mt-1">Il y a 5 heures</p>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="#" class="block p-4 hover:bg-gray-50">
-                                <div class="flex items-start space-x-3">
-                                    <div class="bg-blue-100 p-2 rounded-full">
-                                        <i class="fas fa-file-alt text-blue-600 text-sm"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-sm font-medium text-gray-800">Rapport mensuel disponible</p>
-                                        <p class="text-xs text-gray-500 mt-1">Il y a 1 jour</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="p-3 border-t border-gray-200">
-                            <a href="#" class="text-sm text-green-600 hover:text-green-700 font-medium block text-center">
-                                Voir toutes les notifications
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Avatar utilisateur -->
-                <div class="hidden md:block relative">
-                    <button onclick="toggleUserMenu()" class="flex items-center space-x-2">
-                        <img src="https://ui-avatars.com/api/?name=Admin&background=16a34a&color=fff"
-                             alt="Admin"
-                             class="w-8 h-8 rounded-full hover:ring-2 hover:ring-green-500 transition-all">
-                    </button>
-
-                    <!-- Dropdown user menu -->
-                    <div id="userMenuDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
-                        <a href="#" class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                            <i class="fas fa-user mr-2"></i> Mon profil
-                        </a>
-
-                        <a href="#" class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">
-                            <i class="fas fa-cog mr-2"></i> Paramètres
-                        </a>
-
-                        <form method="POST" action="{{ route('admin.logout') }}" class="m-0">
-                            @csrf
-                            <button type="submit" class="block w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-red-50">
-                                <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
         </header>
 
         <!-- ======================= ZONE DE CONTENU ======================= -->
         <main class="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-100">
+            @if(session('success'))
+                <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg flex items-center">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    {{ session('error') }}
+                </div>
+            @endif
+
             @yield('content')
         </main>
 
         <!-- ======================= FOOTER ======================= -->
-        <footer class="bg-white border-t border-gray-200 py-4 px-6">
+        <footer class="bg-white border-t border-gray-200 py-3 px-6">
             <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
                 <p>&copy; {{ date('Y') }} AgroOrg. Tous droits réservés.</p>
                 <div class="flex space-x-4 mt-2 md:mt-0">
                     <a href="#" class="hover:text-green-600 transition-colors">Aide</a>
-                    <a href="#" class="hover:text-green-600 transition-colors">Documentation</a>
                     <a href="#" class="hover:text-green-600 transition-colors">Contact</a>
-                    <a href="#" class="hover:text-green-600 transition-colors">Confidentialité</a>
                 </div>
             </div>
         </footer>
@@ -260,7 +151,7 @@
 
 <!-- ======================= JAVASCRIPT ======================= -->
 <script>
-    // ============ Gestion du sidebar mobile ============
+    // Gestion du sidebar mobile
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
     const openBtn = document.getElementById('openSidebar');
@@ -288,56 +179,31 @@
         }
     });
 
-    // ============ Toggle notifications dropdown ============
+    // Toggle notifications
     function toggleNotifications() {
         const dropdown = document.getElementById('notificationsDropdown');
-        const userMenu = document.getElementById('userMenuDropdown');
-
-        if (userMenu && !userMenu.classList.contains('hidden')) {
-            userMenu.classList.add('hidden');
-        }
-
         dropdown.classList.toggle('hidden');
     }
 
-    // ============ Toggle user menu dropdown ============
-    function toggleUserMenu() {
-        const dropdown = document.getElementById('userMenuDropdown');
-        const notifications = document.getElementById('notificationsDropdown');
-
-        if (notifications && !notifications.classList.contains('hidden')) {
-            notifications.classList.add('hidden');
-        }
-
-        dropdown.classList.toggle('hidden');
-    }
-
-    // ============ Fermer les dropdowns en cliquant à l'extérieur ============
+    // Fermer les dropdowns en cliquant à l'extérieur
     document.addEventListener('click', function(event) {
         const notificationsDropdown = document.getElementById('notificationsDropdown');
-        const userMenuDropdown = document.getElementById('userMenuDropdown');
 
         if (!event.target.closest('#notificationsDropdown') &&
             !event.target.closest('button[onclick="toggleNotifications()"]')) {
             notificationsDropdown?.classList.add('hidden');
         }
-
-        if (!event.target.closest('#userMenuDropdown') &&
-            !event.target.closest('button[onclick="toggleUserMenu()"]')) {
-            userMenuDropdown?.classList.add('hidden');
-        }
     });
 
-    // ============ Animation des liens du sidebar ============
-    document.querySelectorAll('aside nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            document.querySelectorAll('aside nav a').forEach(l => {
-                l.classList.remove('bg-green-700');
-            });
-
-            this.classList.add('bg-green-700');
+    // Auto-fermer les messages de succès/erreur après 5 secondes
+    setTimeout(() => {
+        const alerts = document.querySelectorAll('[class*="bg-green-100"], [class*="bg-red-100"]');
+        alerts.forEach(alert => {
+            alert.style.transition = 'opacity 0.5s';
+            alert.style.opacity = '0';
+            setTimeout(() => alert.remove(), 500);
         });
-    });
+    }, 5000);
 </script>
 
 @stack('scripts')

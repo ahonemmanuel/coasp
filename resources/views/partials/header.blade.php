@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center py-3">
             <!-- Contact Info -->
             <div class="flex items-center gap-6 text-sm text-gray-600">
-                <a href="tel:+221775055121" class="flex items-center gap-2 hover:text-primary transition-colors">
+                <a href="tel:+2.21775055121e+11" class="flex items-center gap-2 hover:text-primary transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                     </svg>
@@ -114,7 +114,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.index') }}"
+                                    <a href="{{ route('blog.index') }}"
                                        class="block px-6 py-3 transition-colors no-underline {{ request()->routeIs('news.*') ? 'bg-gray-50 text-[#297d53]' : 'text-gray-700 hover:bg-gray-50 hover:text-[#297d53]' }}">
                                         Actualités COASP
                                     </a>
@@ -201,15 +201,131 @@
                 </a>
             </div>
 
-            <!-- Mobile Menu -->
-            <button class="lg:hidden mobile-menu-toggle p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden mobile-menu-toggle p-2 text-gray-700 hover:text-[#297d53] transition-colors">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
             </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-200">
+            <nav class="py-4">
+                <ul class="space-y-2">
+                    <!-- Accueil -->
+                    <li>
+                        <a href="{{ route('home') }}"
+                           class="block px-4 py-3 font-medium transition-colors no-underline {{ request()->routeIs('home') ? 'text-[#297d53] bg-gray-50' : 'text-gray-700 hover:bg-gray-50 hover:text-[#297d53]' }}">
+                            Accueil
+                        </a>
+                    </li>
+
+                    <!-- Qui sommes-nous? -->
+                    <li>
+                        <a href="{{ route('about') }}"
+                           class="block px-4 py-3 font-medium transition-colors no-underline {{ request()->routeIs('about') ? 'text-[#297d53] bg-gray-50' : 'text-gray-700 hover:bg-gray-50 hover:text-[#297d53]' }}">
+                            Qui sommes-nous?
+                        </a>
+                    </li>
+
+                    <!-- Ressources (Dropdown Mobile) -->
+                    <li>
+                        <button onclick="toggleMobileDropdown('resources')" class="w-full flex items-center justify-between px-4 py-3 font-medium text-gray-700 hover:bg-gray-50 hover:text-[#297d53] transition-colors">
+                            <span>Ressources</span>
+                            <svg id="resources-icon" class="w-5 h-5 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <ul id="resources-dropdown" class="hidden bg-gray-50 space-y-1">
+                            <li>
+                                <a href="{{ route('documents.index') }}"
+                                   class="block px-8 py-2 text-sm transition-colors no-underline {{ request()->routeIs('documents.*') ? 'text-[#297d53]' : 'text-gray-600 hover:text-[#297d53]' }}">
+                                    Documents Utiles
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('blog.index') }}"
+                                   class="block px-8 py-2 text-sm transition-colors no-underline {{ request()->routeIs('news.*') ? 'text-[#297d53]' : 'text-gray-600 hover:text-[#297d53]' }}">
+                                    Actualités COASP
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('gallery.index') }}"
+                                   class="block px-8 py-2 text-sm transition-colors no-underline {{ request()->routeIs('gallery.*') ? 'text-[#297d53]' : 'text-gray-600 hover:text-[#297d53]' }}">
+                                    Galerie
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Réseaux (Dropdown Mobile) -->
+                    <li>
+                        <button onclick="toggleMobileDropdown('networks')" class="w-full flex items-center justify-between px-4 py-3 font-medium text-gray-700 hover:bg-gray-50 hover:text-[#297d53] transition-colors">
+                            <span>Réseaux</span>
+                            <svg id="networks-icon" class="w-5 h-5 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <ul id="networks-dropdown" class="hidden bg-gray-50 space-y-1">
+                            <li>
+                                <a href="{{ route('partners') }}"
+                                   class="block px-8 py-2 text-sm transition-colors no-underline {{ request()->routeIs('partners') ? 'text-[#297d53]' : 'text-gray-600 hover:text-[#297d53]' }}">
+                                    Partenaires
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('allies') }}"
+                                   class="block px-8 py-2 text-sm transition-colors no-underline {{ request()->routeIs('allies') ? 'text-[#297d53]' : 'text-gray-600 hover:text-[#297d53]' }}">
+                                    Alliés
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Contact -->
+                    <li class="px-4 pt-2">
+                        <a href="{{ route('contact') }}" class="block text-center bg-[#3d8c5a] hover:bg-[#2d7a4a] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-md no-underline">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </header>
 
 <!-- Widget Google Translate caché -->
 <div id="google_translate_element" style="display: none;"></div>
+
+<script>
+    // Menu mobile toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+        }
+    });
+
+    // Toggle mobile dropdowns
+    function toggleMobileDropdown(dropdownName) {
+        const dropdown = document.getElementById(dropdownName + '-dropdown');
+        const icon = document.getElementById(dropdownName + '-icon');
+
+        if (dropdown) {
+            dropdown.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    }
+</script>
