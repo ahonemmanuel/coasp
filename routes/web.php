@@ -43,9 +43,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
 
-// Dans web.php, ajouter dans Route::prefix('admin')->middleware('admin')
-
-Route::prefix('articles')->name('articles.')->group(function () {
+    Route::prefix('articles')->name('articles.')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('index');
     Route::get('/create', [App\Http\Controllers\Admin\ArticleController::class, 'create'])->name('create');
     Route::post('/', [App\Http\Controllers\Admin\ArticleController::class, 'store'])->name('store');
@@ -57,6 +55,23 @@ Route::prefix('articles')->name('articles.')->group(function () {
     Route::post('/upload-image', [App\Http\Controllers\Admin\ArticleController::class, 'uploadImage'])->name('upload-image');
     Route::delete('/{article}/gallery-image', [App\Http\Controllers\Admin\ArticleController::class, 'deleteGalleryImage'])->name('delete-gallery-image');
 });
+
+    // Gestion des galeries d'événements
+    Route::prefix('galleries')->name('galleries.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\EventGalleryController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\EventGalleryController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\Admin\EventGalleryController::class, 'store'])->name('store');
+        Route::get('/{gallery}/edit', [App\Http\Controllers\Admin\EventGalleryController::class, 'edit'])->name('edit');
+        Route::put('/{gallery}', [App\Http\Controllers\Admin\EventGalleryController::class, 'update'])->name('update');
+        Route::delete('/{gallery}', [App\Http\Controllers\Admin\EventGalleryController::class, 'destroy'])->name('destroy');
+        Route::post('/{gallery}/photos', [App\Http\Controllers\Admin\EventGalleryController::class, 'uploadPhotos'])->name('upload-photos');
+        Route::delete('/photos/{photo}', [App\Http\Controllers\Admin\EventGalleryController::class, 'deletePhoto'])->name('delete-photo');
+        Route::post('/{gallery}/order', [App\Http\Controllers\Admin\EventGalleryController::class, 'updatePhotoOrder'])->name('update-order');
+        Route::get('/{gallery}/download', [App\Http\Controllers\Admin\EventGalleryController::class, 'downloadGallery'])->name('download');
+        Route::patch('/{gallery}/toggle-status', [App\Http\Controllers\Admin\EventGalleryController::class, 'toggleStatus'])->name('toggle-status');
+    });
+
+
 
 
 });
