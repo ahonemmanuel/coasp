@@ -107,10 +107,12 @@ Route::prefix('ressources')->group(function () {
     // Documents utiles
     Route::get('/documents', [DocController::class, 'index'])->name('documents.index');
 
-    // Galerie
+// Galerie
     Route::get('/galerie', [GalleryController::class, 'index'])->name('gallery.index');
     Route::get('/galerie/{slug}', [GalleryController::class, 'show'])->name('gallery.show');
-});
+    Route::get('/galerie/{slug}/telecharger', [GalleryController::class, 'download'])->name('gallery.download');
+
+  });
 
 // Réseaux
 Route::prefix('reseaux')->group(function () {
