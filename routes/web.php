@@ -28,7 +28,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
-    });
+
+
 
     // Gestion des documents
     Route::prefix('documents')->name('documents.')->group(function () {
@@ -106,6 +107,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/{ally}/toggle-status', [App\Http\Controllers\Admin\AllyAdminController::class, 'toggleStatus'])->name('toggle-status');
     });
 
+    });
 
 
 });
