@@ -61,9 +61,10 @@
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center justify-between h-16 px-6 bg-green-900">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-2">
-                <i class="fas fa-leaf text-2xl"></i>
-                <span class="text-xl font-bold">AgroOrg</span>
+                <img src="{{ asset('images/lo.png') }}" alt="COASP Logo" class="h-10 w-auto">
+                <span class="text-xl font-bold">COASP</span>
             </a>
+
             <button id="closeSidebar" class="md:hidden text-white hover:text-gray-300">
                 <i class="fas fa-times text-xl"></i>
             </button>
