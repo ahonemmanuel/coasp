@@ -13,12 +13,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
+        .scrollbar-thin::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
         }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Pour Firefox */
+        .scrollbar-thin {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+        }
+
+        /* Empêcher le scroll du body quand la sidebar mobile est ouverte */
+        body.sidebar-open {
+            overflow: hidden;
+        }
+
+        /* Animation plus fluide pour la sidebar */
+        .sidebar-transition {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 
@@ -29,10 +56,10 @@
 <div class="flex h-screen overflow-hidden">
 
     <!-- ======================= SIDEBAR ======================= -->
-    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-green-800 text-white transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-green-800 text-white transform -translate-x-full sidebar-transition md:relative md:translate-x-0 md:flex md:flex-col">
 
         <!-- Logo -->
-        <div class="flex items-center justify-between h-16 px-6 bg-green-900">
+        <div class="flex-shrink-0 flex items-center justify-between h-16 px-6 bg-green-900">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-2">
                 <i class="fas fa-leaf text-2xl"></i>
                 <span class="text-xl font-bold">AgroOrg</span>
@@ -42,8 +69,8 @@
             </button>
         </div>
 
-        <!-- Navigation -->
-        <nav class="mt-6 px-4 overflow-y-auto scrollbar-hide h-[calc(100vh-8rem)]">
+        <!-- Navigation - Scrollable -->
+        <nav class="flex-1 overflow-y-auto px-4 py-4 scrollbar-thin">
             <!-- Tableau de bord -->
             <a href="{{ route('admin.dashboard') }}"
                class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors mb-2">
@@ -110,7 +137,7 @@
         </nav>
 
         <!-- Footer Sidebar avec déconnexion -->
-        <div class="absolute bottom-0 left-0 right-0 p-4 bg-green-900">
+        <div class="flex-shrink-0 p-4 bg-green-900 mt-auto">
             <div class="flex items-center space-x-3 px-4 py-2">
                 <img src="https://ui-avatars.com/api/?name=Admin&background=4ade80&color=fff"
                      alt="Admin"
@@ -130,13 +157,13 @@
     </aside>
 
     <!-- Overlay pour mobile -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
     <!-- ======================= CONTENU PRINCIPAL ======================= -->
-    <div class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex-1 flex flex-col overflow-hidden min-w-0">
 
         <!-- ======================= HEADER ======================= -->
-        <header class="bg-white shadow-sm h-16 flex items-center justify-between px-4 md:px-6">
+        <header class="flex-shrink-0 bg-white shadow-sm h-16 flex items-center justify-between px-4 md:px-6">
 
             <!-- Bouton Menu Mobile -->
             <button id="openSidebar" class="md:hidden text-gray-600 hover:text-gray-900">
@@ -144,8 +171,8 @@
             </button>
 
             <!-- Titre de la page -->
-            <div class="flex-1">
-                <h1 class="text-xl font-semibold text-gray-800 ml-4 md:ml-0">
+            <div class="flex-1 min-w-0">
+                <h1 class="text-xl font-semibold text-gray-800 ml-4 md:ml-0 truncate">
                     @yield('page-title', 'Tableau de bord')
                 </h1>
             </div>
@@ -183,7 +210,7 @@
         </main>
 
         <!-- ======================= FOOTER ======================= -->
-        <footer class="bg-white border-t border-gray-200 py-3 px-6">
+        <footer class="flex-shrink-0 bg-white border-t border-gray-200 py-3 px-6">
             <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
                 <p>&copy; {{ date('Y') }} AgroOrg. Tous droits réservés.</p>
                 <div class="flex space-x-4 mt-2 md:mt-0">
@@ -202,26 +229,48 @@
     const overlay = document.getElementById('overlay');
     const openBtn = document.getElementById('openSidebar');
     const closeBtn = document.getElementById('closeSidebar');
+    const body = document.body;
 
-    openBtn.addEventListener('click', () => {
+    const openSidebar = () => {
         sidebar.classList.remove('-translate-x-full');
         overlay.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    });
+        body.classList.add('sidebar-open');
+    };
 
     const closeSidebar = () => {
         sidebar.classList.add('-translate-x-full');
         overlay.classList.add('hidden');
-        document.body.style.overflow = 'auto';
+        body.classList.remove('sidebar-open');
     };
 
+    openBtn.addEventListener('click', openSidebar);
     closeBtn.addEventListener('click', closeSidebar);
     overlay.addEventListener('click', closeSidebar);
 
+    // Fermer la sidebar si on clique sur un lien
+    document.querySelectorAll('#sidebar a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                closeSidebar();
+            }
+        });
+    });
+
+    // Fermer la sidebar en appuyant sur Echap
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && window.innerWidth < 768) {
+            closeSidebar();
+        }
+    });
+
+    // Gestion du resize
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) {
+            sidebar.classList.remove('-translate-x-full');
             overlay.classList.add('hidden');
-            document.body.style.overflow = 'auto';
+            body.classList.remove('sidebar-open');
+        } else {
+            sidebar.classList.add('-translate-x-full');
         }
     });
 </script>
