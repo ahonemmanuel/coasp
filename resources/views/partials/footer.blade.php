@@ -73,24 +73,6 @@
                 </p>
 
                 <!-- Formulaire Newsletter -->
-                <form action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-3">
-                    @csrf
-                    <div>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Votre adresse email"
-                            required
-                            class="w-full px-4 py-3 rounded-lg bg-[#3d4e46] border border-[#4a5c54] text-white placeholder-gray-400 focus:outline-none focus:border-[#7fb069] transition-colors"
-                        >
-                    </div>
-                    <button
-                        type="submit"
-                        class="w-full bg-[#7fb069] hover:bg-[#6fa057] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    >
-                        S'abonner
-                    </button>
-                </form>
 
                 @if(session('success'))
                     <div class="mt-3 p-3 bg-green-600 text-white rounded-lg text-sm">

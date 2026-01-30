@@ -62,13 +62,30 @@
                 <span>Articles</span>
             </a>
 
-                <a href="{{ route('admin.galleries.index') }}"
-                   class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.galleries.*') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                    <span>Galeries</span>
-                </a>
+            <a href="{{ route('admin.galleries.index') }}"
+               class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.galleries.*') ? 'bg-green-700 text-white' : 'hover:bg-green-700 hover:text-white' }} transition-colors mb-2">
+
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+
+                <span>Galeries</span>
+            </a>
+
+
+            <a href="{{ route('admin.team-members.index') }}"
+               class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.team-members.*') ? 'bg-green-700 text-white' : 'hover:bg-green-700 hover:text-white' }} transition-colors mb-2">
+
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M17 20h5v-2a4 4 0 00-5-4M9 20H4v-2a4 4 0 015-4m8-4a4 4 0 10-8 0 4 4 0 008 0zM7 10a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+
+                <span>Membres d'Équipe</span>
+            </a>
+
+
 
 
         </nav>

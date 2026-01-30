@@ -637,93 +637,370 @@
             </div>
 
             <!-- Grille des membres - 4 colonnes -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Carte 1: Alihou Ndiaye -->
-                <div class="relative group team-card">
-                    <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
-                        <!-- Image -->
-                        <div class="relative h-72 overflow-hidden">
-                            <img src="{{ asset('images/b3.jpg') }}" alt="Alihou Ndiaye" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+            <!-- Section Équipe -->
+            <section class="py-16 px-4 md:px-8 lg:px-16 bg-white">
+                <div class="max-w-7xl mx-auto">
+                    <!-- En-tête -->
+                    <div class="text-center mb-12 animate-slideInUp">
+                        <p class="text-yellow-500 font-semibold text-sm md:text-base mb-2 uppercase tracking-wide">Excellent membre de l'équipe</p>
+                        <h2 class="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-bold">Rencontrez notre superbe équipe</h2>
+                    </div>
 
-                            <!-- Overlay gradient -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    @php
+                        // Récupérer les membres dynamiques de la base de données
+                        $dynamicMembers = \App\Models\TeamMember::active()->ordered()->get();
+                        $totalMembers = 2 + $dynamicMembers->count(); // 2 statiques + dynamiques
+                        $showMoreButton = $totalMembers > 4;
 
-                            <!-- Icônes sociales verticales - Apparaissent au hover -->
-                            <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
-                                <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden">
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300">
-                                        <i class="fab fa-facebook-f text-sm"></i>
-                                    </a>
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
-                                        <i class="fab fa-twitter text-sm"></i>
-                                    </a>
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
-                                        <i class="fab fa-linkedin-in text-sm"></i>
-                                    </a>
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
-                                        <i class="fab fa-instagram text-sm"></i>
-                                    </a>
+                        // Limiter à 2 membres dynamiques pour l'affichage initial si on dépasse 4
+                        $displayedDynamicMembers = $showMoreButton ? $dynamicMembers->take(2) : $dynamicMembers;
+                    @endphp
+
+                        <!-- Grille des membres - 4 colonnes -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="team-grid">
+                        <!-- Carte 1: Alihou Ndiaye (STATIQUE) -->
+                        <div class="relative group team-card">
+                            <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                                <!-- Image -->
+                                <div class="relative h-72 overflow-hidden">
+                                    <img src="{{ asset('images/b3.jpg') }}" alt="Alihou Ndiaye" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+
+                                    <!-- Overlay gradient -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                    <!-- Icônes sociales verticales -->
+                                    <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                                        <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden">
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300">
+                                                <i class="fab fa-facebook-f text-sm"></i>
+                                            </a>
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                <i class="fab fa-twitter text-sm"></i>
+                                            </a>
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                <i class="fab fa-linkedin-in text-sm"></i>
+                                            </a>
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                <i class="fab fa-instagram text-sm"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bouton de partage -->
+                                    <button onclick="shareProfile('Alihou Ndiaye')" class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100">
+                                        <i class="fas fa-share-alt text-sm"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Informations -->
+                                <div class="p-4 bg-gradient-to-br from-gray-50 to-white">
+                                    <h3 class="text-lg font-bold text-gray-900 mb-1">Alihou Ndiaye</h3>
+                                    <p class="text-gray-600 text-xs">coordinateur sous-régional COASP</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Bouton de partage - Apparaît au hover -->
-                            <button class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100">
-                                <i class="fas fa-share-alt text-sm"></i>
+                        <!-- Carte 2: Omer Richard Métogbé Agoligan (STATIQUE) -->
+                        <div class="relative group team-card">
+                            <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                                <!-- Image -->
+                                <div class="relative h-72 overflow-hidden">
+                                    <img src="{{ asset('images/b4.jpg') }}" alt="Omer Richard Métogbé Agoligan" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+
+                                    <!-- Overlay gradient -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                    <!-- Icônes sociales verticales -->
+                                    <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                                        <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden">
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300">
+                                                <i class="fab fa-facebook-f text-sm"></i>
+                                            </a>
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                <i class="fab fa-twitter text-sm"></i>
+                                            </a>
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                <i class="fab fa-linkedin-in text-sm"></i>
+                                            </a>
+                                            <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                <i class="fab fa-instagram text-sm"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bouton de partage -->
+                                    <button onclick="shareProfile('Omer Richard Métogbé Agoligan')" class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100">
+                                        <i class="fas fa-share-alt text-sm"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Informations -->
+                                <div class="p-4 bg-gradient-to-br from-gray-50 to-white">
+                                    <h3 class="text-lg font-bold text-gray-900 mb-1">Omer Richard Métogbé Agoligan</h3>
+                                    <p class="text-gray-600 text-xs">Assistant du coordinateur sous-régional COASP</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Membres DYNAMIQUES de la base de données -->
+                        @foreach($displayedDynamicMembers as $member)
+                            <div class="relative group team-card">
+                                <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                                    <!-- Image -->
+                                    <div class="relative h-72 overflow-hidden">
+                                        <img src="{{ Storage::url($member->photo) }}" alt="{{ $member->name }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+
+                                        <!-- Overlay gradient -->
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                        <!-- Icônes sociales verticales -->
+                                        @if($member->facebook_url || $member->twitter_url || $member->linkedin_url || $member->instagram_url)
+                                            <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                                                <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden">
+                                                    @if($member->facebook_url)
+                                                        <a href="{{ $member->facebook_url }}" target="_blank" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300">
+                                                            <i class="fab fa-facebook-f text-sm"></i>
+                                                        </a>
+                                                    @endif
+
+                                                    @if($member->twitter_url)
+                                                        <a href="{{ $member->twitter_url }}" target="_blank" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                            <i class="fab fa-twitter text-sm"></i>
+                                                        </a>
+                                                    @endif
+
+                                                    @if($member->linkedin_url)
+                                                        <a href="{{ $member->linkedin_url }}" target="_blank" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                            <i class="fab fa-linkedin-in text-sm"></i>
+                                                        </a>
+                                                    @endif
+
+                                                    @if($member->instagram_url)
+                                                        <a href="{{ $member->instagram_url }}" target="_blank" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
+                                                            <i class="fab fa-instagram text-sm"></i>
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        <!-- Bouton de partage -->
+                                        <button onclick="shareProfile('{{ $member->name }}')" class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100">
+                                            <i class="fas fa-share-alt text-sm"></i>
+                                        </button>
+                                    </div>
+
+                                    <!-- Informations -->
+                                    <div class="p-4 bg-gradient-to-br from-gray-50 to-white">
+                                        <h3 class="text-lg font-bold text-gray-900 mb-1">{{ $member->name }}</h3>
+                                        <p class="text-gray-600 text-xs">{{ $member->position }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Bouton "Voir Plus" (affiché si plus de 4 membres au total) -->
+                    @if($showMoreButton)
+                        <div class="text-center mt-10">
+                            <button onclick="openTeamModal()"
+                                    class="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-green-500/50 transform hover:-translate-y-1 hover:scale-105">
+
+                                <i class="fas fa-users mr-2"></i>
+                                Voir tous les membres ({{ $totalMembers }})
+                            </button>
+                        </div>
+                    @endif
+                </div>
+            </section>
+
+            <!-- Modal Popup pour tous les membres -->
+            <div id="teamModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden overflow-y-auto" onclick="closeTeamModal(event)">
+                <div class="min-h-screen px-4 py-8 flex items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-2xl max-w-7xl w-full mx-auto transform transition-all" onclick="event.stopPropagation()">
+                        <!-- Header du modal -->
+                        <div class="bg-gradient-to-r from-green-700 to-green-600 px-6 py-5 rounded-t-2xl flex justify-between items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Notre Équipe Complète</h3>
+                                <p class="text-green-100 text-sm mt-1">{{ $totalMembers }} membres</p>
+                            </div>
+                            <button onclick="closeTeamModal()" class="text-white hover:bg-white/20 rounded-full p-2 transition-colors duration-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
                             </button>
                         </div>
 
-                        <!-- Informations -->
-                        <div class="p-4 bg-gradient-to-br from-gray-50 to-white">
-                            <h3 class="text-lg font-bold text-gray-900 mb-1">Alihou Ndiaye</h3>
-                            <p class="text-gray-600 text-xs">coordinateur sous-régional COASP</p>
-                        </div>
-                    </div>
-                </div>
+                        <!-- Contenu du modal -->
+                        <div class="p-6 max-h-[70vh] overflow-y-auto">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <!-- Membres statiques dans le modal -->
+                                <div class="relative group">
+                                    <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                                        <div class="relative h-64 overflow-hidden">
+                                            <img src="{{ asset('images/b3.jpg') }}" alt="Alihou Ndiaye" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                <!-- Carte 2: Omer Richard Métogbé Agoligan -->
-                <div class="relative group team-card">
-                    <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
-                        <!-- Image -->
-                        <div class="relative h-72 overflow-hidden">
-                            <img src="{{ asset('images/b4.jpg') }}" alt="Omer Richard Métogbé Agoligan" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
-
-                            <!-- Overlay gradient -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                            <!-- Icônes sociales verticales - Apparaissent au hover -->
-                            <div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
-                                <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden">
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300">
-                                        <i class="fab fa-facebook-f text-sm"></i>
-                                    </a>
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
-                                        <i class="fab fa-twitter text-sm"></i>
-                                    </a>
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
-                                        <i class="fab fa-linkedin-in text-sm"></i>
-                                    </a>
-                                    <a href="#" class="flex items-center justify-center w-10 h-10 text-white hover:bg-yellow-500 transition-colors duration-300 border-t border-yellow-300">
-                                        <i class="fab fa-instagram text-sm"></i>
-                                    </a>
+                                            <!-- Icônes sociales dans le modal -->
+                                            <div class="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden flex flex-col">
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors">
+                                                        <i class="fab fa-facebook-f text-xs"></i>
+                                                    </a>
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                        <i class="fab fa-twitter text-xs"></i>
+                                                    </a>
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                        <i class="fab fa-linkedin-in text-xs"></i>
+                                                    </a>
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                        <i class="fab fa-instagram text-xs"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 bg-gradient-to-br from-gray-50 to-white">
+                                            <h4 class="text-base font-bold text-gray-900 mb-1">Alihou Ndiaye</h4>
+                                            <p class="text-gray-600 text-xs">coordinateur sous-régional COASP</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Bouton de partage - Apparaît au hover -->
-                            <button class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100">
-                                <i class="fas fa-share-alt text-sm"></i>
+                                <div class="relative group">
+                                    <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                                        <div class="relative h-64 overflow-hidden">
+                                            <img src="{{ asset('images/b4.jpg') }}" alt="Omer Richard Métogbé Agoligan" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                            <div class="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden flex flex-col">
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors">
+                                                        <i class="fab fa-facebook-f text-xs"></i>
+                                                    </a>
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                        <i class="fab fa-twitter text-xs"></i>
+                                                    </a>
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                        <i class="fab fa-linkedin-in text-xs"></i>
+                                                    </a>
+                                                    <a href="#" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                        <i class="fab fa-instagram text-xs"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 bg-gradient-to-br from-gray-50 to-white">
+                                            <h4 class="text-base font-bold text-gray-900 mb-1">Omer Richard Métogbé Agoligan</h4>
+                                            <p class="text-gray-600 text-xs">Assistant du coordinateur sous-régional COASP</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tous les membres dynamiques dans le modal -->
+                                @foreach($dynamicMembers as $member)
+                                    <div class="relative group">
+                                        <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100">
+                                            <div class="relative h-64 overflow-hidden">
+                                                <img src="{{ Storage::url($member->photo) }}" alt="{{ $member->name }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                                @if($member->facebook_url || $member->twitter_url || $member->linkedin_url || $member->instagram_url)
+                                                    <div class="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                        <div class="bg-yellow-400 rounded-lg shadow-xl overflow-hidden flex flex-col">
+                                                            @if($member->facebook_url)
+                                                                <a href="{{ $member->facebook_url }}" target="_blank" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors">
+                                                                    <i class="fab fa-facebook-f text-xs"></i>
+                                                                </a>
+                                                            @endif
+
+                                                            @if($member->twitter_url)
+                                                                <a href="{{ $member->twitter_url }}" target="_blank" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                                    <i class="fab fa-twitter text-xs"></i>
+                                                                </a>
+                                                            @endif
+
+                                                            @if($member->linkedin_url)
+                                                                <a href="{{ $member->linkedin_url }}" target="_blank" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                                    <i class="fab fa-linkedin-in text-xs"></i>
+                                                                </a>
+                                                            @endif
+
+                                                            @if($member->instagram_url)
+                                                                <a href="{{ $member->instagram_url }}" target="_blank" class="flex items-center justify-center w-8 h-8 text-white hover:bg-yellow-500 transition-colors border-t border-yellow-300">
+                                                                    <i class="fab fa-instagram text-xs"></i>
+                                                                </a>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="p-3 bg-gradient-to-br from-gray-50 to-white">
+                                                <h4 class="text-base font-bold text-gray-900 mb-1">{{ $member->name }}</h4>
+                                                <p class="text-gray-600 text-xs">{{ $member->position }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Footer du modal -->
+                        <div class="bg-gray-50 px-6 py-4 rounded-b-2xl text-center">
+                            <button onclick="closeTeamModal()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition-colors duration-300">
+                                Fermer
                             </button>
                         </div>
-
-                        <!-- Informations -->
-                        <div class="p-4 bg-gradient-to-br from-gray-50 to-white">
-                            <h3 class="text-lg font-bold text-gray-900 mb-1">Omer Richard Métogbé Agoligan</h3>
-                            <p class="text-gray-600 text-xs">Assistant du coordinateur sous-régional COASP</p>
-                        </div>
                     </div>
                 </div>
-
-                <!-- Vous pouvez ajouter les cartes 3 et 4 ici selon le même modèle -->
             </div>
+
+            <script>
+                // Fonction pour ouvrir le modal
+                function openTeamModal() {
+                    const modal = document.getElementById('teamModal');
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Empêcher le scroll de la page
+                }
+
+                // Fonction pour fermer le modal
+                function closeTeamModal(event) {
+                    // Si event est undefined, c'est qu'on a cliqué sur le bouton fermer
+                    // Si event.target === event.currentTarget, c'est qu'on a cliqué sur le fond noir
+                    if (!event || event.target === event.currentTarget || event.target.closest('button')) {
+                        const modal = document.getElementById('teamModal');
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = ''; // Réactiver le scroll
+                    }
+                }
+
+                // Fermer avec la touche Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        closeTeamModal();
+                    }
+                });
+
+                // Fonction de partage
+                function shareProfile(name) {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: name + ' - COASP',
+                            text: 'Découvrez ' + name + ' de notre équipe COASP',
+                            url: window.location.href
+                        }).catch(err => console.log('Erreur de partage:', err));
+                    } else {
+                        // Fallback: copier l'URL dans le presse-papier
+                        const url = window.location.href;
+                        navigator.clipboard.writeText(url).then(() => {
+                            alert('Lien copié dans le presse-papier!');
+                        });
+                    }
+                }
+            </script>
+
+
+
+
         </div>
     </section>
 @endsection
@@ -772,6 +1049,7 @@
             speed: 500,
         });
     </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const slider = document.getElementById('slider');

@@ -12,7 +12,7 @@
 
     <style>
         .hero-overlay {
-            background-color: rgba(157, 205, 151, 0.7);
+            background-color: rgba(184, 223, 179, 0.7);
         }
     </style>
     <!-- Hero Section -->

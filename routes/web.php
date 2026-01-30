@@ -71,6 +71,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/{gallery}/toggle-status', [App\Http\Controllers\Admin\EventGalleryController::class, 'toggleStatus'])->name('toggle-status');
     });
 
+    // Dans le groupe Route::prefix('admin')->name('admin.')->group(function () {
+// Après les autres routes (galleries, articles, documents)
+
+// Gestion des membres d'équipe
+    Route::prefix('team-members')->name('team-members.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\TeamMemberController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\TeamMemberController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\Admin\TeamMemberController::class, 'store'])->name('store');
+        Route::get('/{teamMember}/edit', [App\Http\Controllers\Admin\TeamMemberController::class, 'edit'])->name('edit');
+        Route::put('/{teamMember}', [App\Http\Controllers\Admin\TeamMemberController::class, 'update'])->name('update');
+        Route::delete('/{teamMember}', [App\Http\Controllers\Admin\TeamMemberController::class, 'destroy'])->name('destroy');
+        Route::patch('/{teamMember}/toggle-status', [App\Http\Controllers\Admin\TeamMemberController::class, 'toggleStatus'])->name('toggle-status');
+    });
+
 
 
 
@@ -127,11 +141,7 @@ Route::prefix('contact')->group(function () {
     Route::post('/', [ContactController::class, 'submit'])->name('contact.submit');
 });
 
-// Newsletter
-Route::post('/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
 
-// Recherche
-Route::get('/recherche', [HomeController::class, 'search'])->name('search');
 
 // Pages légales
 Route::view('/politique-confidentialite', 'pages.privacy')->name('privacy');
