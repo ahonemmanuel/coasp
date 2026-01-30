@@ -44,49 +44,68 @@
 
         <!-- Navigation -->
         <nav class="mt-6 px-4 overflow-y-auto scrollbar-hide h-[calc(100vh-8rem)]">
+            <!-- Tableau de bord -->
             <a href="{{ route('admin.dashboard') }}"
                class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors mb-2">
                 <i class="fas fa-home"></i>
                 <span>Tableau de bord</span>
             </a>
 
+            <!-- Documents -->
             <a href="{{ route('admin.documents.index') }}"
                class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.documents.*') ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors mb-2">
                 <i class="fas fa-file-alt"></i>
                 <span>Documents</span>
             </a>
 
+            <!-- Articles -->
             <a href="{{ route('admin.articles.index') }}"
                class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.articles.*') ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors mb-2">
                 <i class="fas fa-newspaper"></i>
                 <span>Articles</span>
             </a>
 
+            <!-- Galeries -->
             <a href="{{ route('admin.galleries.index') }}"
                class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.galleries.*') ? 'bg-green-700 text-white' : 'hover:bg-green-700 hover:text-white' }} transition-colors mb-2">
-
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
-
                 <span>Galeries</span>
             </a>
 
-
+            <!-- Membres d'Équipe -->
             <a href="{{ route('admin.team-members.index') }}"
                class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.team-members.*') ? 'bg-green-700 text-white' : 'hover:bg-green-700 hover:text-white' }} transition-colors mb-2">
-
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M17 20h5v-2a4 4 0 00-5-4M9 20H4v-2a4 4 0 015-4m8-4a4 4 0 10-8 0 4 4 0 008 0zM7 10a4 4 0 11-8 0 4 4 0 018 0z"/>
                 </svg>
-
                 <span>Membres d'Équipe</span>
             </a>
 
+            <!-- Séparateur -->
+            <div class="border-t border-green-700 my-4"></div>
 
+            <!-- Section Réseaux -->
+            <div class="mb-2 px-4 text-xs font-semibold text-green-300 uppercase tracking-wider">
+                Réseaux
+            </div>
 
+            <!-- Partenaires -->
+            <a href="{{ route('admin.partners.index') }}"
+               class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.partners.*') ? 'bg-green-700 text-white' : 'hover:bg-green-700 hover:text-white' }} transition-colors mb-2">
+                <i class="fas fa-handshake"></i>
+                <span>Partenaires</span>
+            </a>
+
+            <!-- Alliés -->
+            <a href="{{ route('admin.allies.index') }}"
+               class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.allies.*') ? 'bg-green-700 text-white' : 'hover:bg-green-700 hover:text-white' }} transition-colors mb-2">
+                <i class="fas fa-users"></i>
+                <span>Alliés</span>
+            </a>
 
         </nav>
 
@@ -205,24 +224,6 @@
             document.body.style.overflow = 'auto';
         }
     });
-
-    // Toggle notifications
-    function toggleNotifications() {
-        const dropdown = document.getElementById('notificationsDropdown');
-        dropdown.classList.toggle('hidden');
-    }
-
-    // Fermer les dropdowns en cliquant à l'extérieur
-    document.addEventListener('click', function(event) {
-        const notificationsDropdown = document.getElementById('notificationsDropdown');
-
-        if (!event.target.closest('#notificationsDropdown') &&
-            !event.target.closest('button[onclick="toggleNotifications()"]')) {
-            notificationsDropdown?.classList.add('hidden');
-        }
-    });
-
-    // Auto-fermer les messages de succès/erreur après 5 secondes
 </script>
 
 @stack('scripts')

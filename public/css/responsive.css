@@ -1,0 +1,114 @@
+/* responsive.css */
+/* Breakpoints personnalisés */
+@media (max-width: 480px) {
+    .xs-hidden { display: none !important; }
+    .xs-block { display: block !important; }
+    .xs-flex { display: flex !important; }
+    .xs-grid { display: grid !important; }
+
+    /* Padding réduits */
+    .xs-p-1 { padding: 0.25rem !important; }
+    .xs-p-2 { padding: 0.5rem !important; }
+    .xs-p-3 { padding: 0.75rem !important; }
+
+    /* Margin réduits */
+    .xs-m-1 { margin: 0.25rem !important; }
+    .xs-m-2 { margin: 0.5rem !important; }
+
+    /* Text sizes */
+    .xs-text-xs { font-size: 0.75rem !important; }
+    .xs-text-sm { font-size: 0.875rem !important; }
+    .xs-text-base { font-size: 1rem !important; }
+
+    /* Images responsive */
+    img.responsive-img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Styles pour très petits téléphones */
+    .xxs-text-xs { font-size: 0.6875rem !important; }
+    .xxs-p-1 { padding: 0.125rem !important; }
+
+    /* Réduction de la taille des logos */
+    .logo img {
+        max-height: 40px !important;
+    }
+
+    /* Boutons plus petits */
+    button, .btn, a.btn {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.8125rem !important;
+    }
+}
+
+/* Empêcher le débordement horizontal */
+.container {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* Tableaux responsifs */
+table.responsive-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Images flexibles */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Vidéos et iframes */
+video, iframe, object, embed {
+    max-width: 100%;
+}
+
+/* Correction des grilles sur mobile */
+@media (max-width: 768px) {
+    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Amélioration des formulaires sur mobile */
+@media (max-width: 640px) {
+    input, textarea, select {
+        font-size: 16px !important; /* Empêche le zoom sur iOS */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    textarea {
+        padding: 12px !important;
+    }
+}
+
+/* Smooth scrolling pour mobile */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Touch targets améliorés pour mobile */
+@media (max-width: 768px) {
+    button,
+    a.btn,
+    input[type="submit"],
+    input[type="button"] {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+
+    /* Liens et boutons de navigation */
+    nav a,
+    .mobile-menu a {
+        padding: 12px 16px !important;
+        display: block !important;
+    }
+}

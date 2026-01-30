@@ -71,9 +71,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/{gallery}/toggle-status', [App\Http\Controllers\Admin\EventGalleryController::class, 'toggleStatus'])->name('toggle-status');
     });
 
-    // Dans le groupe Route::prefix('admin')->name('admin.')->group(function () {
-// Après les autres routes (galleries, articles, documents)
-
 // Gestion des membres d'équipe
     Route::prefix('team-members')->name('team-members.')->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\TeamMemberController::class, 'index'])->name('index');
@@ -85,6 +82,29 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/{teamMember}/toggle-status', [App\Http\Controllers\Admin\TeamMemberController::class, 'toggleStatus'])->name('toggle-status');
     });
 
+
+
+// Gestion des Partenaires
+    Route::prefix('partners')->name('partners.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\PartnerAdminController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\PartnerAdminController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\Admin\PartnerAdminController::class, 'store'])->name('store');
+        Route::get('/{partner}/edit', [App\Http\Controllers\Admin\PartnerAdminController::class, 'edit'])->name('edit');
+        Route::put('/{partner}', [App\Http\Controllers\Admin\PartnerAdminController::class, 'update'])->name('update');
+        Route::delete('/{partner}', [App\Http\Controllers\Admin\PartnerAdminController::class, 'destroy'])->name('destroy');
+        Route::patch('/{partner}/toggle-status', [App\Http\Controllers\Admin\PartnerAdminController::class, 'toggleStatus'])->name('toggle-status');
+    });
+
+// Gestion des Alliés
+    Route::prefix('allies')->name('allies.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\AllyAdminController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\AllyAdminController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\Admin\AllyAdminController::class, 'store'])->name('store');
+        Route::get('/{ally}/edit', [App\Http\Controllers\Admin\AllyAdminController::class, 'edit'])->name('edit');
+        Route::put('/{ally}', [App\Http\Controllers\Admin\AllyAdminController::class, 'update'])->name('update');
+        Route::delete('/{ally}', [App\Http\Controllers\Admin\AllyAdminController::class, 'destroy'])->name('destroy');
+        Route::patch('/{ally}/toggle-status', [App\Http\Controllers\Admin\AllyAdminController::class, 'toggleStatus'])->name('toggle-status');
+    });
 
 
 
@@ -129,16 +149,16 @@ Route::prefix('ressources')->group(function () {
   });
 
 // Réseaux
-Route::prefix('reseaux')->group(function () {
-    Route::get('/partenaires', [PartnerController::class, 'partners'])->name('partners');
-    Route::get('/allies', [PartnerController::class, 'allies'])->name('allies');
-    Route::get('/membres', [PartnerController::class, 'members'])->name('members');
-});
+// Routes frontend
+Route::get('/partenaires', [App\Http\Controllers\PartnerController::class, 'index'])->name('partners');
+Route::get('/allies', [App\Http\Controllers\AllyController::class, 'index'])->name('allies');
+
 
 // Contact
 Route::prefix('contact')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('contact');
     Route::post('/', [ContactController::class, 'submit'])->name('contact.submit');
+    Route::post('/sd', [ContactController::class, 'subm'])->name('newsletter.subscribe');
 });
 
 
